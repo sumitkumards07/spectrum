@@ -43,16 +43,15 @@ const projects = [
   { image: project2, title: 'RideNow Booking', category: 'Mobile App' },
   { image: project3, title: 'Assign Flow', category: 'SaaS Dashboard' },
   { image: project4, title: 'Aashna Herbals', category: 'Web Platform' },
-  { image: project5, title: 'FoodFinder', category: 'Mobile App' },
 ]
 
 const featured = [
-  { image: featured1, title: 'Web Development', dark: true },
-  { image: featured2, title: 'Mobile Apps', dark: true, featured: true },
-  { image: featured3, title: 'UI/UX Design', dark: false },
-  { image: featured4, title: 'AI Integration', dark: false },
-  { image: featured5, title: 'E-Commerce', dark: false },
-  { image: featured6, title: 'Cloud & DevOps', dark: false },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/003_28_March_Cukoo_single_image.jpg', title: 'Cukoo Apparels', dark: true },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/108-maryada-tee-carousel-3-dec-1.jpg', title: 'Maryada Tees', dark: true, featured: true },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/haldiram-taste-of-home-cities-carousel-25-jan-1.jpg', title: 'Haldiram Campaigns', dark: false },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/case-factory-carousel-1200px-6-dec-2.jpg', title: 'Case Factory', dark: false },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/rangraze-banarasi-saree-with-offer-carousel-14-aug.jpg', title: 'Rangraze Sarees', dark: false },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/zaadram-Unisex-Eyewear-carousel-30-nov-3.jpg', title: 'Zaadram Eyewear', dark: false },
 ]
 
 const pricingPlans = [
@@ -93,10 +92,8 @@ const faqData = [
 ]
 
 const team = [
-  { avatar: team1, name: 'Sarah Kim', role: 'UI/UX Designer', active: false },
-  { avatar: team2, name: 'David Chen', role: 'Web Developer', active: false },
-  { avatar: team3, name: 'Maya Patel', role: 'SEO Marketing', active: true },
-  { avatar: team4, name: 'Alex Rivera', role: 'Brand Strategy', active: false },
+  { avatar: team1, name: 'Harshvardan', role: 'Social Media Management', active: false },
+  { avatar: team2, name: 'Sumit Kumar', role: 'Software Development', active: true },
 ]
 
 const achievements = [
@@ -236,34 +233,83 @@ document.querySelector('#app').innerHTML = `
       </div>
     </section>
 
-    <section class="section featured">
+    <!-- UGC Section -->
+    <div class="ugc-main-wrapper">
+      <a href="/" class="view-ugc-btn">See More</a>
+      <div class="ugc-wrapper">
+        <div class="bg-content">
+          <h2>SEE OUR</h2>
+          <h2>BEST UGC</h2>
+          <h2>CONTENT</h2>
+        </div>
+        <div class="ugc-list-wrap">
+          <div class="ugc-item video-card-1">
+            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-1.webp">
+              <source src="/04987ebaeecc41f0b95499ca88dbb27f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="ugc-item video-card-2">
+            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-2.webp">
+              <source src="/3189195aa7f94f6abb1eded2a175fe5b.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="ugc-item video-card-3">
+            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-3.webp">
+              <source src="/e60d777ba5874f67a00e13aa18cec359.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="ugc-item video-card-4">
+            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-4.webp">
+              <source src="/4d99e36ce5a84d8cb8ee5af4560dd757.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="ugc-item video-card-5">
+            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-5.webp">
+              <source src="/506bf5a507234db0b741b33cfe96607f.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="ugc-item video-card-6">
+            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-6.webp">
+              <source src="/6ca274d21baa4d10ada403454ad284b8.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popUpForVideo">
+      <div class="close-popup">×</div>
+      <video controls="" autoplay="" loop="">
+        <source src="" type="video/mp4">
+      </video>
+    </div>
+
+    <section class="section graphic-portfolio">
       <div class="container">
         <div class="section__header">
           <div class="section__intro animate-on-scroll">
             <h2 class="section__title">
-              Featured Projects
+              Graphic Portfolio
               <img src="${dotsDecor}" alt="" class="section__dots" />
             </h2>
-            <p class="section__desc">${placeholder}</p>
+            <p class="section__desc">Check out some of our best graphic design and branding work.</p>
           </div>
-          <a href="#" class="btn btn--secondary">Show All</a>
         </div>
-        <div class="featured__grid">
-          ${featured
-            .map(
-              (f) => `
-            <article class="featured-card animate-on-scroll ${f.featured ? 'featured-card--highlight' : ''} ${f.dark ? 'featured-card--dark' : ''}">
-              <img src="${f.image}" alt="${f.title}" class="featured-card__image" />
-              <div class="featured-card__body">
-                <h3>${f.title}</h3>
-                <p>Pizza ipsum dolor meat lovers buffalo.</p>
-                <button type="button" class="featured-card__cta" aria-label="View project">
-                  <img src="${arrowRight}" alt="" width="16" height="16" />
-                </button>
-              </div>
-            </article>`
-            )
-            .join('')}
+      </div>
+      <div class="scrolling-portfolio-wrapper">
+        <div class="scrolling-line scrolling-line-left">
+          <div class="scrolling-track">
+            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+          </div>
+        </div>
+        <div class="scrolling-line scrolling-line-right" style="margin-top: 24px;">
+          <div class="scrolling-track scrolling-track--reverse">
+            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+          </div>
         </div>
       </div>
     </section>
@@ -445,53 +491,54 @@ document.querySelector('#app').innerHTML = `
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <div class="footer__logo">
-          <span class="footer__logo-icon">S</span>
-          <span>Spectrum</span>
-        </div>
-        <p>${placeholder}</p>
-        <div class="footer__contact">
-          <a href="mailto:hello@spectrum.com">hello@spectrum.com</a>
-          <a href="tel:+15551234567">+1 (555) 123-4567</a>
-          <span>5987 Mid Rivers Mall Dr., St. Charles</span>
-        </div>
-        <div class="footer__social">
-          <a href="#" aria-label="Telegram"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5 1.5 4.5v1l6.2 2.3L14.5 5.5v-1L8 1.5Zm0 4.2L2.8 4.5 8 6.5l5.2-2-5.2 1.2Zm-5.5 2.5 5.5 2 5.5-2v4.8l-5.5 2-5.5-2V8.2Z"/></svg></a>
-          <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M9.5 7.2 15.2 0h-1.4L8.9 6.2 4.9 0H0l6 8.7L0 16h1.4l5.2-6 4.2 6H16L9.5 7.2Zm-1.8 2.1-.6-.9-4.8-6.9h2.1l3.9 5.6.6.9 5 7.2h-2.1l-4.1-5.9Z"/></svg></a>
-          <a href="#" aria-label="Discord"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.5 3.2A10.5 10.5 0 0 0 10.4 2a7.5 7.5 0 0 0-.3.6c1.2.2 2.3.7 3.2 1.3a8.8 8.8 0 0 0-5.3-2 8.8 8.8 0 0 0-5.3 2c.9-.6 2-1.1 3.2-1.3a7.5 7.5 0 0 0-.3-.6 10.5 10.5 0 0 0-3.1 1.2C.8 6.5.2 9.6.5 12.6a10.6 10.6 0 0 0 3.2 1.6 7.8 7.8 0 0 0 .7-1.1 6.9 6.9 0 0 1-1.1-.5l.3-.2a7.5 7.5 0 0 0 6.4 0l.3.2a6.9 6.9 0 0 1-1.1.5c.2.4.5.8.7 1.1a10.6 10.6 0 0 0 3.2-1.6c.4-3.5-.6-6.5-2.7-9.4ZM5.6 10.5c-.7 0-1.3-.6-1.3-1.4s.6-1.4 1.3-1.4 1.3.6 1.3 1.4-.6 1.4-1.3 1.4Zm4.8 0c-.7 0-1.3-.6-1.3-1.4s.6-1.4 1.3-1.4 1.3.6 1.3 1.4-.6 1.4-1.3 1.4Z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M15.5 4.2a2 2 0 0 0-1.4-1.4C12.6 2.5 8 2.5 8 2.5s-4.6 0-6.1.3A2 2 0 0 0 .5 4.2 21 21 0 0 0 .2 8a21 21 0 0 0 .3 3.8 2 2 0 0 0 1.4 1.4c1.5.3 6.1.3 6.1.3s4.6 0 6.1-.3a2 2 0 0 0 1.4-1.4A21 21 0 0 0 15.8 8a21 21 0 0 0-.3-3.8ZM6.4 10.3V5.7L10.5 8l-4.1 2.3Z"/></svg></a>
-        </div>
-      </div>
-      <div class="footer__menus">
-        <div id="services">
-          <h4><span class="corner-frame corner-frame--dark corner-frame--menu"><span class="corner-frame__border"></span><img src="${heroHighlight}" alt="" class="corner-frame__dots" /><span class="corner-frame__text">Services</span></span></h4>
-          <ul>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Mobile Apps</a></li>
-            <li><a href="#">UI/UX Design</a></li>
-            <li><a href="#">AI Integration</a></li>
-            <li><a href="#">E-Commerce</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4><span class="corner-frame corner-frame--dark corner-frame--menu"><span class="corner-frame__border"></span><img src="${heroHighlight}" alt="" class="corner-frame__dots" /><span class="corner-frame__text">Company</span></span></h4>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Portfolio</a></li>
-          </ul>
-        </div>
-      </div>
+  <footer class="site-footer-v2">
+    <div class="footer-v2-huge-text">
+      <h1>Spectrum</h1>
     </div>
-    <div class="container footer__bottom">
-      <div class="footer__legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Disclimer</a>
+    <div class="footer-v2-panel">
+      <div class="footer-v2-glass"></div>
+      <div class="footer-v2-content container">
+        <div class="footer-v2-left">
+          <div class="footer-v2-logo">
+            <img src="${logo}" alt="Spectrum" style="width: 140px; margin-bottom: 16px; filter: brightness(0) invert(1);" />
+            <h2>Ship Tastefully Crafted<br />Digital Experiences</h2>
+          </div>
+          <div class="footer-v2-social">
+            <p style="font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 8px;">Follow Us:</p>
+            <svg width="180" height="24" viewBox="0 0 312 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.673 20.703L18.427 28.375H26.885L17.39 15.714L25.29 6.625H22.088L15.905 13.737L10.573 6.625H2.115L11.189 18.727L2.803 28.375H6.005L12.673 20.703ZM19.635 25.958L6.948 9.042H9.364L22.052 25.958H19.635Z" fill="#FFFFFF" />
+              <path d="M68.75 5.75C69.413 5.75 70.049 6.013 70.518 6.482C70.987 6.951 71.25 7.587 71.25 8.25V25.75C71.25 26.413 70.987 27.049 70.518 27.518C70.049 27.987 69.413 28.25 68.75 28.25H51.25C50.587 28.25 49.951 27.987 49.482 27.518C49.013 27.049 48.75 26.413 48.75 25.75V8.25C48.75 7.587 49.013 6.951 49.482 6.482C49.951 6.013 50.587 5.75 51.25 5.75H68.75ZM68.125 25.125V18.5C68.125 17.419 67.696 16.383 66.931 15.618C66.167 14.854 65.131 14.425 64.05 14.425C62.987 14.425 61.75 15.075 61.15 16.05V14.662H57.663V25.125H61.15V18.962C61.15 18 61.925 17.212 62.888 17.212C63.352 17.212 63.797 17.397 64.125 17.725C64.453 18.053 64.638 18.498 64.638 18.962V25.125H68.125ZM53.6 12.7C54.157 12.7 54.691 12.479 55.085 12.085C55.479 11.691 55.7 11.157 55.7 10.6C55.7 9.438 54.763 8.488 53.6 8.488C53.04 8.488 52.502 8.71 52.106 9.106C51.71 9.502 51.487 10.04 51.487 10.6C51.487 11.762 52.438 12.7 53.6 12.7ZM55.337 25.125V14.662H51.875V25.125H55.337Z" fill="#FFFFFF" />
+              <path d="M124.167 17C124.167 9.18 117.82 2.833 110 2.833C102.18 2.833 95.833 9.18 95.833 17C95.833 23.857 100.707 29.566 107.167 30.883V21.25H104.333V17H107.167V13.458C107.167 10.724 109.391 8.5 112.125 8.5H115.667V12.75H112.833C112.054 12.75 111.417 13.387 111.417 14.167V17H115.667V21.25H111.417V31.096C118.571 30.387 124.167 24.352 124.167 17Z" fill="#FFFFFF" />
+              <path d="M167.458 12.922C165.619 6.078 159.292 6.506 159.292 6.506C159.292 6.506 150.542 5.923 150.542 17C150.542 28.078 159.292 27.495 159.292 27.495C159.292 27.495 164.493 27.841 166.875 22.924C167.653 20.757 167.458 16.422 159.875 16.422C159.875 16.422 156.375 16.422 156.375 19.339C156.375 20.478 157.542 21.672 159.292 21.672C161.042 21.672 162.991 20.474 163.375 18.172C164.542 11.172 158.125 10.589 156.375 13.506" stroke="#FFFFFF" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <p style="font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 12px;">© 2026 Spectrum, All rights reserved</p>
+          </div>
+        </div>
+        <div class="footer-v2-right">
+          <div class="footer-v2-col">
+            <h3>Services</h3>
+            <a href="#">Features</a>
+            <a href="#">Solution</a>
+            <a href="#">Customers</a>
+            <a href="#">Pricing</a>
+            <a href="#">Help</a>
+            <a href="#">Terms</a>
+          </div>
+          <div class="footer-v2-col">
+            <h3>Company</h3>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+            <a href="#">Blogs</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy</a>
+          </div>
+          <div class="footer-v2-col">
+            <h3>Location</h3>
+            <a href="#" style="pointer-events: none;">Jaipur</a>
+            <a href="#" style="pointer-events: none;">Rajasthan, India</a>
+          </div>
+        </div>
       </div>
-      <p>Copyright © Spectrum All right Reserved 2025</p>
     </div>
   </footer>
 </div>
@@ -598,3 +645,128 @@ document.addEventListener('click', (e) => {
     }
   }
 })
+
+function initUGCAnimations() {
+  if (typeof gsap === 'undefined') {
+    console.error('GSAP not loaded yet');
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  const videoItems = document.querySelectorAll('.ugc-item');
+  const popup = document.querySelector('.popUpForVideo');
+  if (!popup) return;
+  const popupVideo = popup.querySelector('video');
+  const closePopup = document.querySelector('.close-popup');
+
+  videoItems.forEach((item) => {
+    item.addEventListener('click', function() {
+      const sourceVideo = this.querySelector('video source');
+      if (sourceVideo) {
+        popupVideo.src = sourceVideo.getAttribute('src');
+        popup.classList.add('active');
+        popupVideo.play();
+      }
+    });
+  });
+
+  closePopup.addEventListener('click', function() {
+    popup.classList.remove('active');
+    popupVideo.pause();
+    popupVideo.currentTime = 0;
+  });
+
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      popup.classList.remove('active');
+      popupVideo.pause();
+      popupVideo.currentTime = 0;
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && popup.classList.contains('active')) {
+      popup.classList.remove('active');
+      popupVideo.pause();
+      popupVideo.currentTime = 0;
+    }
+  });
+
+  const videoCards = document.querySelectorAll('.video-thumbnail');
+  videoCards.forEach((video) => {
+    video.addEventListener('mouseover', function () {
+      if (this.paused) this.play();
+    });
+    video.addEventListener('mouseout', function () {
+      this.pause();
+      this.currentTime = 0;
+    });
+  });
+
+  let mm = gsap.matchMedia();
+
+  mm.add('(min-width: 769px)', () => {
+    gsap.to('.ugc-wrapper h2:nth-child(1)', {
+      x: 200,
+      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
+    });
+    gsap.to('.ugc-wrapper h2:nth-child(2)', {
+      x: -200,
+      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
+    });
+    gsap.to('.ugc-wrapper h2:nth-child(3)', {
+      x: 300,
+      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
+    });
+
+    const scrollTriggerConfig = {
+      trigger: '.ugc-wrapper',
+      start: 'top top',
+      end: '+=300%', 
+      scrub: 1,
+      pin: true,
+    };
+    const UGC_TL = gsap.timeline({ scrollTrigger: scrollTriggerConfig, defaults: { duration: 1, ease: 'power2.inOut' } });
+    UGC_TL.from('.video-card-1', { y: '130%', x: '170%' })
+      .from('.video-card-2', { y: '130%', x: '130%' }, '-=0.5')
+      .from('.video-card-3', { y: '130%', x: '50%' }, '-=0.5')
+      .from('.video-card-4', { y: '130%', x: '-20%' }, '-=0.5')
+      .from('.video-card-5', { y: '130%', x: '-100%' }, '-=0.5')
+      .from('.video-card-6', { y: '130%', x: '-150%' }, '-=0.5');
+  });
+
+  mm.add('(max-width: 768px)', () => {
+    gsap.from('.ugc-wrapper h2:nth-child(1)', {
+      x: 100,
+      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
+    });
+    gsap.from('.ugc-wrapper h2:nth-child(2)', {
+      x: -100,
+      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
+    });
+    gsap.from('.ugc-wrapper h2:nth-child(3)', {
+      x: 200,
+      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
+    });
+
+    const scrollTriggerConfig = {
+      trigger: '.ugc-wrapper',
+      start: 'top top',
+      end: '+=300%', 
+      scrub: 1,
+      pin: true,
+    };
+    const UGC_TL = gsap.timeline({ scrollTrigger: scrollTriggerConfig, defaults: { duration: 1, ease: 'power2.inOut' } });
+    UGC_TL.from('.video-card-1', { y: '180%', opacity: 1 })
+      .from('.video-card-2', { y: '180%', opacity: 1 }, '-=0.5')
+      .from('.video-card-3', { y: '180%', opacity: 1 }, '-=0.5')
+      .from('.video-card-4', { y: '180%', opacity: 1 }, '-=0.5')
+      .from('.video-card-5', { y: '180%', opacity: 1 }, '-=0.5')
+      .from('.video-card-6', { y: '180%', opacity: 1 }, '-=0.5');
+  });
+}
+
+// We need to wait for GSAP to be available since it's loaded asynchronously in head via CDN.
+window.addEventListener('load', () => {
+  setTimeout(initUGCAnimations, 500);
+});
