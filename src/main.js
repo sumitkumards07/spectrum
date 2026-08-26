@@ -449,7 +449,7 @@ document.querySelector('#app').innerHTML = `
         <div class="cta__content animate-on-scroll">
           <h2 class="cta__title">Let's Build Something ${cornerFrame('Amazing', 'cta__highlight-wrap')}</h2>
           <p class="cta__text">${placeholder}</p>
-          <form class="cta__form" onsubmit="return false">
+          <form class="cta__form">
             <input type="email" placeholder="Email" aria-label="Email address" />
             <button type="submit" class="btn btn--primary btn--icon" aria-label="Subscribe">
               <img src="${arrowRight}" alt="" width="14" height="14" />
@@ -548,6 +548,11 @@ initMobileNav()
 initTeamRows()
 initTestimonialCarousel()
 initScrollAnimations()
+initContactForm()
+
+function initContactForm() {
+  document.querySelector('.cta__form')?.addEventListener('submit', (e) => e.preventDefault())
+}
 
 function initMobileNav() {
   const toggle = document.querySelector('.navbar__toggle')
