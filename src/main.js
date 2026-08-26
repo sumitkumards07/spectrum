@@ -156,6 +156,7 @@ document.querySelector('#app').innerHTML = `
     </div>
   </header>
   <div class="mobile-nav" hidden>
+    <button type="button" class="mobile-nav__close" aria-label="Close menu">&times;</button>
     <nav aria-label="Mobile">
       <a href="#">Home</a>
       <a href="#services">Services</a>
@@ -552,21 +553,31 @@ initScrollAnimations()
 function initMobileNav() {
   const toggle = document.querySelector('.navbar__toggle')
   const panel = document.querySelector('.mobile-nav')
+  const close = document.querySelector('.mobile-nav__close')
   if (!toggle || !panel) return
+
+  const setOpen = (open) => {
+    toggle.setAttribute('aria-expanded', String(open))
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
+    panel.hidden = !open
+    document.body.classList.toggle('menu-open', open)
+  }
 
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true'
-    toggle.setAttribute('aria-expanded', String(!open))
-    panel.hidden = open
-    document.body.classList.toggle('menu-open', !open)
+    setOpen(!open)
   })
 
+  close?.addEventListener('click', () => setOpen(false))
+
   panel.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false')
-      panel.hidden = true
-      document.body.classList.remove('menu-open')
-    })
+    link.addEventListener('click', () => setOpen(false))
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false)
+    }
   })
 }
 

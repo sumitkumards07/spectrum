@@ -72,14 +72,24 @@ describe('main page', () => {
     toggle.click()
 
     expect(toggle.getAttribute('aria-expanded')).toBe('true')
+    expect(toggle.getAttribute('aria-label')).toBe('Close menu')
     expect(panel.hidden).toBe(false)
     expect(document.body.classList.contains('menu-open')).toBe(true)
 
-    panel.querySelector('a').click()
+    panel.querySelector('.mobile-nav__close').click()
 
     expect(toggle.getAttribute('aria-expanded')).toBe('false')
+    expect(toggle.getAttribute('aria-label')).toBe('Open menu')
     expect(panel.hidden).toBe(true)
     expect(document.body.classList.contains('menu-open')).toBe(false)
+
+    toggle.click()
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+    expect(panel.hidden).toBe(true)
+
+    toggle.click()
+    panel.querySelector('a').click()
+    expect(panel.hidden).toBe(true)
   })
 
   it('activates team members with pointer and keyboard input', () => {

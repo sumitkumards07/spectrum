@@ -305,6 +305,22 @@ input {
   color: var(--text-light);
 }
 
+.mobile-nav__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-light);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
 body.menu-open {
   overflow: hidden;
 }
@@ -1662,4 +1678,391 @@ a.view-ugc-btn { position: absolute; bottom: 20px; left: 50%; transform: transla
 }
 .footer-v2-col a:hover {
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(var(--container), 100% - 32px);
+  }
+
+  .navbar {
+    gap: 16px;
+    padding-block: 20px 12px;
+  }
+
+  .navbar__logo img {
+    height: 48px;
+  }
+
+  .navbar__toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .mobile-nav {
+    padding: 32px 20px;
+  }
+
+  .mobile-nav nav {
+    gap: 20px;
+  }
+
+  .mobile-nav a {
+    font-size: 22px;
+  }
+
+  .hero {
+    gap: 24px;
+    min-height: auto;
+    padding-block: 28px 48px;
+  }
+
+  .hero__title {
+    font-size: clamp(32px, 10vw, 42px);
+    margin-bottom: 16px;
+  }
+
+  .hero__text {
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+
+  .hero__character,
+  .cta__character {
+    max-width: 220px;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+
+  .section,
+  .featured,
+  .team,
+  .testimonials {
+    padding-block: 48px;
+  }
+
+  .section__header,
+  .achievements__header {
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .section__intro--solo,
+  .team .section__title {
+    margin-bottom: 28px;
+  }
+
+  .section__title {
+    font-size: clamp(28px, 9vw, 34px);
+  }
+
+  .stats {
+    padding-block: 16px 36px;
+  }
+
+  .stats__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 12px;
+  }
+
+  .stats__item {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stats__value {
+    font-size: 28px;
+  }
+
+  .stats__label {
+    font-size: 12px;
+  }
+
+  .project-card {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  }
+
+  .project-card__info {
+    padding: 16px;
+  }
+
+  .ugc-wrapper {
+    height: 100svh;
+    min-height: 600px;
+    padding: 64px 0;
+  }
+
+  .ugc-item {
+    width: clamp(220px, 70vw, 300px);
+    height: min(62svh, 420px);
+  }
+
+  .bg-content {
+    gap: 32px;
+  }
+
+  .bg-content h2 {
+    font-size: 16vw;
+  }
+
+  a.view-ugc-btn {
+    bottom: 16px;
+    min-height: 44px;
+    padding: 11px 24px;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+
+  .popUpForVideo {
+    height: 100svh;
+    padding: 64px 16px 24px;
+  }
+
+  .popUpForVideo video {
+    max-width: 100%;
+    max-height: calc(100svh - 96px);
+  }
+
+  .close-popup {
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .graphic-portfolio {
+    padding-bottom: 48px;
+  }
+
+  .scrolling-portfolio-wrapper {
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .scrolling-track {
+    gap: 16px;
+  }
+
+  .portfolio-direct-image {
+    height: 220px;
+    max-width: 82vw;
+  }
+
+  .pricing__grid,
+  .achievements__grid {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    margin-inline: -16px;
+    padding: 12px 16px 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .pricing__grid::-webkit-scrollbar,
+  .achievements__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pricing-card {
+    min-width: calc(100% - 32px);
+    padding: 36px 24px 28px;
+    scroll-snap-align: center;
+  }
+
+  .pricing-card--popular,
+  .pricing-card--popular:hover {
+    transform: none;
+  }
+
+  .pricing-card__desc {
+    min-height: 0;
+    margin-bottom: 24px;
+  }
+
+  .pricing-card__meta,
+  .pricing-card__price {
+    margin-bottom: 24px;
+  }
+
+  .pricing-card__meta {
+    padding-bottom: 24px;
+  }
+
+  .pricing-features {
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .achievements__grid {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .achievements__item {
+    min-width: calc(100% - 48px);
+    padding: 24px 20px;
+    background: var(--neutral-50);
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-md);
+  }
+
+  .team__list {
+    gap: 0;
+  }
+
+  .team__row {
+    gap: 16px;
+    padding-block: 20px;
+    border-bottom: 1px solid var(--neutral-200);
+  }
+
+  .team__avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .team__role {
+    font-size: 22px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .testimonial-card {
+    flex-basis: calc(100vw - 48px);
+  }
+
+  .testimonial-card__inner {
+    padding: 18px;
+  }
+
+  .testimonial-card__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cta {
+    gap: 24px;
+    padding-block: 48px;
+  }
+
+  .cta__card {
+    padding: 20px;
+  }
+
+  .cta__title {
+    font-size: clamp(30px, 9vw, 38px);
+  }
+
+  .cta__form {
+    width: 100%;
+  }
+
+  .cta__form input {
+    min-width: 0;
+  }
+
+  .faq-section {
+    padding: 56px 16px;
+  }
+
+  .faq-container {
+    gap: 28px;
+  }
+
+  .faq-left h2 {
+    font-size: 32px;
+  }
+
+  .footer-v2-huge-text {
+    padding-top: 64px;
+    margin-bottom: -8px;
+  }
+
+  .footer-v2-huge-text h1 {
+    font-size: clamp(48px, 16vw, 84px);
+  }
+
+  .footer-v2-content {
+    gap: 40px;
+    padding: 56px 16px;
+  }
+
+  .footer-v2-left {
+    gap: 32px;
+  }
+
+  .footer-v2-logo h2 {
+    font-size: 20px;
+  }
+
+  .footer-v2-right {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+  }
+
+  .footer-v2-col {
+    gap: 12px;
+  }
+
+  .footer-v2-col h3 {
+    font-size: 18px;
+  }
+
+  .btn:hover,
+  .pricing-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .pricing-card {
+    min-width: calc(100% - 24px);
+  }
+
+  .price-val {
+    font-size: 38px;
+  }
+
+  .footer-v2-right {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero__character,
+  .scrolling-track,
+  .scrolling-track--reverse {
+    animation: none;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
