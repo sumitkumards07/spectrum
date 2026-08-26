@@ -133,7 +133,12 @@ const testimonials = [
   },
 ]
 
-document.querySelector('#app').innerHTML = `
+const app = document.querySelector('#app')
+if (!app) {
+  throw new Error('Spectrum: mount point "#app" not found in the document')
+}
+
+app.innerHTML = `
 <div class="page">
   <div class="page__bg" aria-hidden="true"></div>
 
@@ -449,7 +454,7 @@ document.querySelector('#app').innerHTML = `
         <div class="cta__content animate-on-scroll">
           <h2 class="cta__title">Let's Build Something ${cornerFrame('Amazing', 'cta__highlight-wrap')}</h2>
           <p class="cta__text">${placeholder}</p>
-          <form class="cta__form" onsubmit="return false">
+          <form class="cta__form" novalidate>
             <input type="email" placeholder="Email" aria-label="Email address" />
             <button type="submit" class="btn btn--primary btn--icon" aria-label="Subscribe">
               <img src="${arrowRight}" alt="" width="14" height="14" />
@@ -544,15 +549,42 @@ document.querySelector('#app').innerHTML = `
 </div>
 `
 
-initMobileNav()
-initTeamRows()
-initTestimonialCarousel()
-initScrollAnimations()
+// Surfaces a failure instead of letting it disappear: logs it and emits a
+// `spectrum:error` event so a monitoring hook can pick it up.
+function reportError(context, error) {
+  const err = error instanceof Error ? error : new Error(String(error))
+  console.error(`[spectrum] ${context}:`, err)
+  window.dispatchEvent(new CustomEvent('spectrum:error', { detail: { context, error: err } }))
+}
+
+// Runs an initializer so one broken feature cannot stop the others, while the
+// failure itself is still reported.
+function runInit(name, init) {
+  try {
+    init()
+  } catch (error) {
+    reportError(`${name} failed to initialise`, error)
+  }
+}
+
+function requireElement(selector, context, root = document) {
+  const el = root.querySelector(selector)
+  if (!el) throw new Error(`${context}: required element "${selector}" is missing`)
+  return el
+}
+
+runInit('initGlobalErrorReporting', initGlobalErrorReporting)
+runInit('initMobileNav', initMobileNav)
+runInit('initTeamRows', initTeamRows)
+runInit('initTestimonialCarousel', initTestimonialCarousel)
+runInit('initScrollAnimations', initScrollAnimations)
+runInit('initFaq', initFaq)
+runInit('initContactForm', initContactForm)
+runInit('initVideoPopup', initVideoPopup)
 
 function initMobileNav() {
-  const toggle = document.querySelector('.navbar__toggle')
-  const panel = document.querySelector('.mobile-nav')
-  if (!toggle || !panel) return
+  const toggle = requireElement('.navbar__toggle', 'Mobile nav')
+  const panel = requireElement('.mobile-nav', 'Mobile nav')
 
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true'
@@ -571,31 +603,34 @@ function initMobileNav() {
 }
 
 function initTeamRows() {
-  document.querySelectorAll('[data-team-row]').forEach((row) => {
+  const rows = document.querySelectorAll('[data-team-row]')
+  if (!rows.length) throw new Error('Team rows: no "[data-team-row]" elements rendered')
+
+  rows.forEach((row) => {
     const activate = () => {
-      document.querySelectorAll('[data-team-row]').forEach((r) => {
+      rows.forEach((r) => {
         r.classList.remove('team__row--active')
-        r.querySelector('.team__name')?.classList.remove('team__name--active')
+        requireElement('.team__name', 'Team row', r).classList.remove('team__name--active')
       })
       row.classList.add('team__row--active')
-      row.querySelector('.team__name')?.classList.add('team__name--active')
+      requireElement('.team__name', 'Team row', row).classList.add('team__name--active')
     }
-    row.addEventListener('click', activate)
+    row.addEventListener('click', () => runInit('team row activation', activate))
     row.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault()
-        activate()
+        runInit('team row activation', activate)
       }
     })
   })
 }
 
 function initTestimonialCarousel() {
-  const carousel = document.querySelector('[data-carousel]')
+  const carousel = requireElement('[data-carousel]', 'Testimonial carousel')
   const cards = [...document.querySelectorAll('[data-card]')]
-  const prev = document.querySelector('[data-carousel-prev]')
-  const next = document.querySelector('[data-carousel-next]')
-  if (!carousel || !cards.length) return
+  if (!cards.length) throw new Error('Testimonial carousel: no "[data-card]" elements rendered')
+  const prev = requireElement('[data-carousel-prev]', 'Testimonial carousel')
+  const next = requireElement('[data-carousel-next]', 'Testimonial carousel')
 
   let index = cards.findIndex((c) => c.classList.contains('testimonial-card--active'))
   if (index < 0) index = 0
@@ -606,8 +641,8 @@ function initTestimonialCarousel() {
     carousel.scrollTo({ left: cards[index].offsetLeft - carousel.offsetWidth / 2 + cards[index].offsetWidth / 2, behavior: 'smooth' })
   }
 
-  prev?.addEventListener('click', () => scrollToCard(index - 1))
-  next?.addEventListener('click', () => scrollToCard(index + 1))
+  prev.addEventListener('click', () => scrollToCard(index - 1))
+  next.addEventListener('click', () => scrollToCard(index + 1))
 }
 
 function initScrollAnimations() {
@@ -622,86 +657,133 @@ function initScrollAnimations() {
     },
     { threshold: 0.1 }
   )
-  document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+  const animated = document.querySelectorAll('.animate-on-scroll')
+  if (!animated.length) throw new Error('Scroll animations: no ".animate-on-scroll" elements rendered')
+  animated.forEach((el) => {
     observer.observe(el)
   })
 }
 
-// Handle FAQ toggles
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('.faq-item-button')
-  if (btn) {
-    const isExpanded = btn.getAttribute('aria-expanded') === 'true'
-    btn.setAttribute('aria-expanded', !isExpanded)
-    const answer = btn.nextElementSibling
-    if (!isExpanded) {
-      answer.style.maxHeight = answer.scrollHeight + 'px'
-      answer.style.opacity = '1'
-      answer.style.marginTop = '16px'
-    } else {
-      answer.style.maxHeight = '0'
-      answer.style.opacity = '0'
-      answer.style.marginTop = '0'
+function initFaq() {
+  const buttons = document.querySelectorAll('.faq-item-button')
+  if (!buttons.length) throw new Error('FAQ: no ".faq-item-button" elements rendered')
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      try {
+        const answer = requireElement('.faq-answer', 'FAQ', btn.parentElement)
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true'
+        btn.setAttribute('aria-expanded', String(!isExpanded))
+        answer.style.maxHeight = isExpanded ? '0' : `${answer.scrollHeight}px`
+        answer.style.opacity = isExpanded ? '0' : '1'
+        answer.style.marginTop = isExpanded ? '0' : '16px'
+      } catch (error) {
+        reportError('FAQ toggle failed', error)
+      }
+    })
+  })
+}
+
+function initContactForm() {
+  const form = requireElement('.cta__form', 'Contact form')
+  const input = requireElement('input[type="email"]', 'Contact form', form)
+  const status = document.createElement('p')
+  status.className = 'cta__form-status'
+  status.setAttribute('role', 'status')
+  status.setAttribute('aria-live', 'polite')
+  form.insertAdjacentElement('afterend', status)
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const email = input.value.trim()
+    if (!input.checkValidity() || !email) {
+      status.textContent = input.validationMessage || 'Please enter a valid email address.'
+      status.dataset.state = 'error'
+      return
     }
-  }
-})
+    // No subscription endpoint is wired up yet; tell the visitor instead of
+    // pretending the submission succeeded.
+    status.textContent = 'Submissions are not connected yet — please reach out through the contact links below.'
+    status.dataset.state = 'pending'
+    console.warn(`[spectrum] contact form submitted for "${email}" but no subscription endpoint is configured`)
+  })
+}
 
-function initUGCAnimations() {
-  if (typeof gsap === 'undefined') {
-    console.error('GSAP not loaded yet');
-    return;
+// Broken images and videos otherwise fail invisibly (blank space or a frozen
+// poster), and rejected promises never reach the console with any context, so
+// report both.
+function initGlobalErrorReporting() {
+  const onMediaError = (event) => {
+    const el = event.target
+    if (!(el instanceof HTMLImageElement) && !(el instanceof HTMLVideoElement) && !(el instanceof HTMLSourceElement)) return
+    const media = el instanceof HTMLSourceElement ? el.parentElement : el
+    media?.classList.add('media--failed')
+    reportError('media failed to load', new Error(`${media?.tagName ?? el.tagName}: ${el.currentSrc || el.src || 'unknown source'}`))
   }
-  gsap.registerPlugin(ScrollTrigger);
+  // Media error events do not bubble, so listen in the capture phase.
+  window.addEventListener('error', onMediaError, true)
+  window.addEventListener('unhandledrejection', (event) => {
+    reportError('unhandled promise rejection', event.reason)
+  })
+}
 
-  const videoItems = document.querySelectorAll('.ugc-item');
-  const popup = document.querySelector('.popUpForVideo');
-  if (!popup) return;
-  const popupVideo = popup.querySelector('video');
-  const closePopup = document.querySelector('.close-popup');
+// `HTMLMediaElement.play()` rejects when autoplay is blocked or decoding fails;
+// without this the rejection is an unhandled promise.
+function playVideo(video, context) {
+  const played = video.play()
+  if (played && typeof played.catch === 'function') {
+    played.catch((error) => reportError(context, error))
+  }
+}
+
+function initVideoPopup() {
+  const popup = requireElement('.popUpForVideo', 'Video popup')
+  const popupVideo = requireElement('video', 'Video popup', popup)
+  const closePopup = requireElement('.close-popup', 'Video popup')
+  const videoItems = document.querySelectorAll('.ugc-item')
+  if (!videoItems.length) throw new Error('Video popup: no ".ugc-item" elements rendered')
+
+  const close = () => {
+    popup.classList.remove('active')
+    popupVideo.pause()
+    popupVideo.currentTime = 0
+  }
 
   videoItems.forEach((item) => {
-    item.addEventListener('click', function() {
-      const sourceVideo = this.querySelector('video source');
-      if (sourceVideo) {
-        popupVideo.src = sourceVideo.getAttribute('src');
-        popup.classList.add('active');
-        popupVideo.play();
+    item.addEventListener('click', () => {
+      try {
+        const src = requireElement('video source', 'Video popup', item).getAttribute('src')
+        if (!src) throw new Error('Video popup: clicked item has a <source> without a src')
+        popupVideo.src = src
+        popup.classList.add('active')
+        playVideo(popupVideo, 'popup video playback failed')
+      } catch (error) {
+        reportError('opening video popup failed', error)
       }
-    });
-  });
+    })
+  })
 
-  closePopup.addEventListener('click', function() {
-    popup.classList.remove('active');
-    popupVideo.pause();
-    popupVideo.currentTime = 0;
-  });
+  closePopup.addEventListener('click', close)
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) close()
+  })
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup.classList.contains('active')) close()
+  })
 
-  popup.addEventListener('click', function(e) {
-    if (e.target === popup) {
-      popup.classList.remove('active');
-      popupVideo.pause();
-      popupVideo.currentTime = 0;
-    }
-  });
+  document.querySelectorAll('.video-thumbnail').forEach((video) => {
+    video.addEventListener('mouseover', () => {
+      if (video.paused) playVideo(video, 'thumbnail preview playback failed')
+    })
+    video.addEventListener('mouseout', () => {
+      video.pause()
+      video.currentTime = 0
+    })
+  })
+}
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && popup.classList.contains('active')) {
-      popup.classList.remove('active');
-      popupVideo.pause();
-      popupVideo.currentTime = 0;
-    }
-  });
-
-  const videoCards = document.querySelectorAll('.video-thumbnail');
-  videoCards.forEach((video) => {
-    video.addEventListener('mouseover', function () {
-      if (this.paused) this.play();
-    });
-    video.addEventListener('mouseout', function () {
-      this.pause();
-      this.currentTime = 0;
-    });
-  });
+function initUGCAnimations() {
+  gsap.registerPlugin(ScrollTrigger);
 
   let mm = gsap.matchMedia();
 
@@ -766,7 +848,26 @@ function initUGCAnimations() {
   });
 }
 
-// We need to wait for GSAP to be available since it's loaded asynchronously in head via CDN.
+// GSAP is loaded from a CDN in <head>, so poll for it instead of guessing a
+// fixed delay, and report it when the script never arrives.
+function whenGsapReady(timeoutMs = 5000, intervalMs = 100) {
+  return new Promise((resolve, reject) => {
+    const started = Date.now()
+    const check = () => {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        resolve()
+      } else if (Date.now() - started >= timeoutMs) {
+        reject(new Error(`GSAP/ScrollTrigger did not load within ${timeoutMs}ms (CDN blocked or offline)`))
+      } else {
+        setTimeout(check, intervalMs)
+      }
+    }
+    check()
+  })
+}
+
 window.addEventListener('load', () => {
-  setTimeout(initUGCAnimations, 500);
-});
+  whenGsapReady()
+    .then(() => runInit('initUGCAnimations', initUGCAnimations))
+    .catch((error) => reportError('scroll animations for the UGC section are disabled', error))
+})

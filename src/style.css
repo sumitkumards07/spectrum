@@ -1005,6 +1005,26 @@ body.menu-open {
   border-color: var(--accent-light);
 }
 
+.cta__form-status {
+  margin-top: 10px;
+  font-size: 13px;
+  min-height: 18px;
+}
+
+.cta__form-status[data-state='error'] {
+  color: #c0392b;
+}
+
+.cta__form-status[data-state='pending'] {
+  color: var(--neutral-800);
+}
+
+/* Images and videos that failed to load */
+.media--failed {
+  background: var(--neutral-200);
+  opacity: 0.4;
+}
+
 .cta__character {
   width: min(280px, 100%);
   justify-self: center;
