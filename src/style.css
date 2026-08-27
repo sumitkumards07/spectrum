@@ -323,8 +323,14 @@ body.menu-open {
 .navbar__link {
   font-family: var(--font-heading);
   font-size: 14px;
-  color: var(--neutral-500);
+  font-weight: 700;
+  color: var(--neutral-900);
   position: relative;
+  transition: color 0.2s ease;
+}
+
+.navbar__link:hover {
+  color: var(--accent);
 }
 
 .navbar__link--active {
