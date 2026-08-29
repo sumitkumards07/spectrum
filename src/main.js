@@ -143,7 +143,30 @@ document.querySelector('#app').innerHTML = `
     </a>
     <nav class="navbar__nav" aria-label="Main">
       <a href="#" class="navbar__link navbar__link--active">Home<img src="${navLine}" alt="" class="navbar__link-line" /></a>
-      <a href="#services" class="navbar__link">Services</a>
+      <div class="navbar__dropdown">
+        <a href="#services" class="navbar__link navbar__link-wrap">
+          Services
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <div class="navbar__dropdown-menu">
+          <a href="#services" class="navbar__dropdown-link">Performance Marketing</a>
+          <a href="#services" class="navbar__dropdown-link">Social Media Marketing</a>
+          <a href="#services" class="navbar__dropdown-link">Content Marketing</a>
+          <a href="#services" class="navbar__dropdown-link">Shopify Development</a>
+        </div>
+      </div>
+      <div class="navbar__dropdown">
+        <a href="#services" class="navbar__link navbar__link-wrap">
+          Software Development
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <div class="navbar__dropdown-menu">
+          <a href="#services" class="navbar__dropdown-link">App Development</a>
+          <a href="#services" class="navbar__dropdown-link">Website Development</a>
+          <a href="#services" class="navbar__dropdown-link">Software Development</a>
+          <a href="#services" class="navbar__dropdown-link">CRM Development</a>
+        </div>
+      </div>
       <a href="#portfolio" class="navbar__link">Portfilio</a>
       <a href="#about" class="navbar__link">About</a>
       <a href="#contact" class="navbar__link">Contact</a>
@@ -159,6 +182,17 @@ document.querySelector('#app').innerHTML = `
     <nav aria-label="Mobile">
       <a href="#">Home</a>
       <a href="#services">Services</a>
+      <a href="#services" class="mobile-nav__sublink">- Performance Marketing</a>
+      <a href="#services" class="mobile-nav__sublink">- Social Media Marketing</a>
+      <a href="#services" class="mobile-nav__sublink">- Content Marketing</a>
+      <a href="#services" class="mobile-nav__sublink">- Shopify Development</a>
+      
+      <a href="#services">Software Development</a>
+      <a href="#services" class="mobile-nav__sublink">- App Development</a>
+      <a href="#services" class="mobile-nav__sublink">- Website Development</a>
+      <a href="#services" class="mobile-nav__sublink">- Software Development</a>
+      <a href="#services" class="mobile-nav__sublink">- CRM Development</a>
+      
       <a href="#portfolio">Portfilio</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
