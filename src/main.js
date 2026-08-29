@@ -142,7 +142,6 @@ document.querySelector('#app').innerHTML = `
       <img src="${logo}" alt="Spectrum" width="152" height="64" />
     </a>
     <nav class="navbar__nav" aria-label="Main">
-      <a href="#" class="navbar__link navbar__link--active">Home<img src="${navLine}" alt="" class="navbar__link-line" /></a>
       <div class="navbar__dropdown">
         <a href="#services" class="navbar__link navbar__link-wrap">
           Services
@@ -180,7 +179,6 @@ document.querySelector('#app').innerHTML = `
   </header>
   <div class="mobile-nav" hidden>
     <nav aria-label="Mobile">
-      <a href="#">Home</a>
       <a href="#services">Services</a>
       <a href="#services" class="mobile-nav__sublink">- Performance Marketing</a>
       <a href="#services" class="mobile-nav__sublink">- Social Media Marketing</a>
