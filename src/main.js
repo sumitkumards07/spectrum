@@ -944,7 +944,7 @@ const renderCaseStudyDetail = (caseStudy) => `
 `;
 
 const renderContactPage = () => {
-  document.title = 'Contact Us - Digi Sidekick';
+  document.title = 'Contact Us - Spectrum';
   return `
     <main class="contact-page container animate-on-scroll">
       <div class="contact-header">
@@ -1002,7 +1002,7 @@ const ugcVideos = [
 ];
 
 const renderPortfolioPage = () => {
-  document.title = 'UGC Portfolio - Digi Sidekick';
+  document.title = 'UGC Portfolio - Spectrum';
   return `
     <main class="ugc-portfolio-page container animate-on-scroll">
       <div class="ugc-hero">
@@ -1467,9 +1467,9 @@ const renderApp = () => {
   // Update document title for basic SEO
   const h1 = document.querySelector('h1');
   if (h1) {
-    document.title = h1.textContent.trim() + ' - Digi Sidekick';
+    document.title = h1.textContent.trim() + ' - Spectrum';
   } else {
-    document.title = 'Digi Sidekick';
+    document.title = 'Spectrum';
   }
 
   // Re-initialize all scripts after DOM updates
