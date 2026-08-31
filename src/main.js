@@ -712,12 +712,12 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
     </section>
     ` : ''}
     
-    <section class="section cta container" style="margin-bottom: 120px;">
+    <section class="section sp-cta-section container" style="margin-bottom: 120px;">
       <div class="cta__card sp-cta" style="margin-top: 64px;">
         <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
           <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your ${title}?</h2>
           <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
-          <a href="#/contact" class="btn btn--primary btn--icon" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+          <a href="#/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
         </div>
       </div>
     </section>
@@ -930,12 +930,12 @@ const renderCaseStudyDetail = (caseStudy) => `
         </div>
         ` : ''}
       </div>
-      <section class="section cta container" style="margin-bottom: 120px; padding: 0;">
+      <section class="section sp-cta-section container" style="margin-bottom: 120px; padding: 0;">
         <div class="cta__card sp-cta" style="margin-top: 64px;">
           <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
             <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your brand?</h2>
             <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
-            <a href="#/contact" class="btn btn--primary btn--icon" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+            <a href="#/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
           </div>
         </div>
       </section>
@@ -1019,12 +1019,12 @@ const renderPortfolioPage = () => {
           </div>
         `).join('')}
       </div>
-      <section class="section cta container" style="margin-bottom: 120px;">
+      <section class="section sp-cta-section container" style="margin-bottom: 120px;">
         <div class="cta__card sp-cta" style="margin-top: 64px;">
           <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
             <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your brand?</h2>
             <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
-            <a href="#/contact" class="btn btn--primary btn--icon" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+            <a href="#/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
           </div>
         </div>
       </section>
