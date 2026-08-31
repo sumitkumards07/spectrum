@@ -1,0 +1,5 @@
+- [x] Run `init` and apply missing framework setup
+- [x] Wire Reticle SDK into `main.js` for Vite vanilla JS
+- [x] Open app in browser
+- [ ] Restart client to load Reticle MCP server
+- [ ] Drive a flow using `reticle_act_and_wait` and `reticle_assert` to verify the installation

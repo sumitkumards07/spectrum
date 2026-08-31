@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@reticlehq/browser": "^2.12.0",
+    "@reticlehq/react": "^2.12.0",
+    "@reticlehq/vite-plugin": "^2.12.0",
     "vite": "^8.2.0"
   },
   "dependencies": {
     "@paper-design/shaders-react": "^0.0.80",
-    "lucide-react": "^1.34.0",
-    "next": "^16.3.2"
+    "lucide-react": "^1.34.0"
   }
 }
