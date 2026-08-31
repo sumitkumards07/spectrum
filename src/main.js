@@ -1680,19 +1680,41 @@ function initUGCAnimations() {
   });
 
   mm.add('(max-width: 768px)', () => {
-    gsap.utils.toArray('.ugc-item').forEach((item) => {
-      gsap.from(item, {
-        scrollTrigger: {
-          trigger: item,
-          start: 'top bottom-=50',
-          toggleActions: 'play none none reverse'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 0.6,
-        ease: 'power2.out'
-      });
-    });
+    // Background text scrolling
+    gsap.fromTo('.ugc-wrapper h2:nth-child(1)', 
+      { x: '20%' }, 
+      { x: '-20%', scrollTrigger: { trigger: '.ugc-wrapper', start: 'top bottom', end: 'bottom top', scrub: 1 } }
+    );
+    gsap.fromTo('.ugc-wrapper h2:nth-child(2)', 
+      { x: '-20%' }, 
+      { x: '20%', scrollTrigger: { trigger: '.ugc-wrapper', start: 'top bottom', end: 'bottom top', scrub: 1 } }
+    );
+    gsap.fromTo('.ugc-wrapper h2:nth-child(3)', 
+      { x: '10%' }, 
+      { x: '-30%', scrollTrigger: { trigger: '.ugc-wrapper', start: 'top bottom', end: 'bottom top', scrub: 1 } }
+    );
+
+    // Pinning the wrapper
+    const scrollTriggerConfig = {
+      trigger: '.ugc-wrapper',
+      start: 'top top',
+      end: '+=300%', 
+      scrub: 1,
+      pin: true,
+    };
+    
+    // Animate cards in like a deck forming
+    const UGC_TL = gsap.timeline({ scrollTrigger: scrollTriggerConfig, defaults: { duration: 1, ease: 'power2.inOut' } });
+    
+    // Start them all off screen below
+    gsap.set('.ugc-item', { y: '150%' });
+    
+    UGC_TL.to('.video-card-1', { y: '0%', rotation: 2, zIndex: 1 })
+      .to('.video-card-2', { y: '0%', rotation: -4, zIndex: 2 }, '-=0.7')
+      .to('.video-card-3', { y: '0%', rotation: 4, zIndex: 3 }, '-=0.7')
+      .to('.video-card-4', { y: '0%', rotation: -2, zIndex: 4 }, '-=0.7')
+      .to('.video-card-5', { y: '0%', rotation: 3, zIndex: 5 }, '-=0.7')
+      .to('.video-card-6', { y: '0%', rotation: -5, zIndex: 6 }, '-=0.7');
   });
 }
 
