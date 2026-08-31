@@ -4,7 +4,7 @@ if (import.meta.env.DEV) reticle.connect();
 import './style.css'
 
 import logo from './assets/figma/logo.png'
-import heroCharacter from './assets/figma/hero-character.png'
+import heroCharacter from './assets/figma/hero-character.webp'
 import heroHighlight from './assets/figma/hero-highlight.svg'
 import arrowRight from './assets/figma/arrow-right.svg'
 import navLine from './assets/figma/nav-line.svg'
@@ -1680,7 +1680,19 @@ function initUGCAnimations() {
   });
 
   mm.add('(max-width: 768px)', () => {
-    // Mobile uses native CSS grid scrolling now, no GSAP pinning needed.
+    gsap.utils.toArray('.ugc-item').forEach((item) => {
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top bottom-=50',
+          toggleActions: 'play none none reverse'
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power2.out'
+      });
+    });
   });
 }
 
