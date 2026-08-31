@@ -138,40 +138,40 @@ const testimonials = [
 
 const renderNavbar = () => `
   <header class="navbar container">
-    <a href="#/" class="navbar__logo">
+    <a href="/" class="navbar__logo">
       <img src="${logo}" alt="Spectrum" width="152" height="64" />
     </a>
     <nav class="navbar__nav" aria-label="Main">
       <div class="navbar__dropdown">
-        <a href="#/" class="navbar__link navbar__link-wrap">
+        <a href="/" class="navbar__link navbar__link-wrap">
           Services
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </a>
         <div class="navbar__dropdown-menu">
-          <a href="#/performance-marketing" class="navbar__dropdown-link">Performance Marketing</a>
-          <a href="#/social-media-marketing" class="navbar__dropdown-link">Social Media Marketing</a>
-          <a href="#/content-marketing" class="navbar__dropdown-link">Content Marketing</a>
-          <a href="#/shopify-development" class="navbar__dropdown-link">Shopify Development</a>
+          <a href="/performance-marketing" class="navbar__dropdown-link">Performance Marketing</a>
+          <a href="/social-media-marketing" class="navbar__dropdown-link">Social Media Marketing</a>
+          <a href="/content-marketing" class="navbar__dropdown-link">Content Marketing</a>
+          <a href="/shopify-development" class="navbar__dropdown-link">Shopify Development</a>
         </div>
       </div>
       <div class="navbar__dropdown">
-        <a href="#/" class="navbar__link navbar__link-wrap">
+        <a href="/" class="navbar__link navbar__link-wrap">
           Software Development
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </a>
         <div class="navbar__dropdown-menu">
-          <a href="#/app-development" class="navbar__dropdown-link">App Development</a>
-          <a href="#/website-development" class="navbar__dropdown-link">Website Development</a>
-          <a href="#/software-development" class="navbar__dropdown-link">Software Development</a>
-          <a href="#/crm-development" class="navbar__dropdown-link">CRM Development</a>
+          <a href="/app-development" class="navbar__dropdown-link">App Development</a>
+          <a href="/website-development" class="navbar__dropdown-link">Website Development</a>
+          <a href="/software-development" class="navbar__dropdown-link">Software Development</a>
+          <a href="/crm-development" class="navbar__dropdown-link">CRM Development</a>
         </div>
       </div>
-      <a href="#/portfolio" class="navbar__link">Portfolio</a>
-      <a href="#/about" class="navbar__link">About</a>
-      <a href="#/contact" class="navbar__link">Contact</a>
+      <a href="/portfolio" class="navbar__link">Portfolio</a>
+      <a href="/about" class="navbar__link">About</a>
+      <a href="/contact" class="navbar__link">Contact</a>
     </nav>
     <div class="navbar__actions">
-      <a href="#/contact" class="btn btn--primary navbar__cta">Get in Touch</a>
+      <a href="/contact" class="btn btn--primary navbar__cta">Get in Touch</a>
       <button type="button" class="navbar__toggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -179,21 +179,21 @@ const renderNavbar = () => `
   </header>
   <div class="mobile-nav" hidden>
     <nav aria-label="Mobile">
-      <a href="#/">Services</a>
-      <a href="#/performance-marketing" class="mobile-nav__sublink">- Performance Marketing</a>
-      <a href="#/social-media-marketing" class="mobile-nav__sublink">- Social Media Marketing</a>
-      <a href="#/content-marketing" class="mobile-nav__sublink">- Content Marketing</a>
-      <a href="#/shopify-development" class="mobile-nav__sublink">- Shopify Development</a>
+      <a href="/">Services</a>
+      <a href="/performance-marketing" class="mobile-nav__sublink">- Performance Marketing</a>
+      <a href="/social-media-marketing" class="mobile-nav__sublink">- Social Media Marketing</a>
+      <a href="/content-marketing" class="mobile-nav__sublink">- Content Marketing</a>
+      <a href="/shopify-development" class="mobile-nav__sublink">- Shopify Development</a>
       
-      <a href="#/">Software Development</a>
-      <a href="#/app-development" class="mobile-nav__sublink">- App Development</a>
-      <a href="#/website-development" class="mobile-nav__sublink">- Website Development</a>
-      <a href="#/software-development" class="mobile-nav__sublink">- Software Development</a>
-      <a href="#/crm-development" class="mobile-nav__sublink">- CRM Development</a>
+      <a href="/">Software Development</a>
+      <a href="/app-development" class="mobile-nav__sublink">- App Development</a>
+      <a href="/website-development" class="mobile-nav__sublink">- Website Development</a>
+      <a href="/software-development" class="mobile-nav__sublink">- Software Development</a>
+      <a href="/crm-development" class="mobile-nav__sublink">- CRM Development</a>
       
-      <a href="#/portfolio">Portfolio</a>
-      <a href="#/about">About</a>
-      <a href="#/contact">Contact</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
     </nav>
   </div>
 `;
@@ -225,19 +225,19 @@ const renderFooter = () => `
         <div class="footer-v2-right">
           <div class="footer-v2-col">
             <h3>Services</h3>
-            <a href="#/performance-marketing">Performance Marketing</a>
-            <a href="#/shopify-development">Shopify Dev</a>
-            <a href="#/app-development">App Dev</a>
-            <a href="#/software-development">Software Dev</a>
-            <a href="#/website-development">Website Dev</a>
+            <a href="/performance-marketing">Performance Marketing</a>
+            <a href="/shopify-development">Shopify Dev</a>
+            <a href="/app-development">App Dev</a>
+            <a href="/software-development">Software Dev</a>
+            <a href="/website-development">Website Dev</a>
           </div>
           <div class="footer-v2-col">
             <h3>Company</h3>
-            <a href="#/about">About</a>
-            <a href="#/careers">Careers</a>
-            <a href="#/blogs">Blogs</a>
-            <a href="#/contact">Contact</a>
-            <a href="#/privacy">Privacy</a>
+            <a href="/about">About</a>
+            <a href="/careers">Careers</a>
+            <a href="/blogs">Blogs</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy">Privacy</a>
           </div>
           <div class="footer-v2-col">
             <h3>Location</h3>
@@ -255,20 +255,20 @@ const renderHome = () => `
     <section class="hero container">
       <div class="hero__content animate-on-scroll">
         <h1 class="hero__title">
-          Turning Ideas Into
-          ${cornerFrame('Digital Reality', 'hero__highlight-wrap')}
+          Performance Marketing That Drives
+          ${cornerFrame('Real Business Growth', 'hero__highlight-wrap')}
         </h1>
         <p class="hero__text">${placeholder}</p>
         <div class="hero__actions">
-          <a href="#/contact" class="btn btn--primary">Start a Project</a>
-          <a href="#/portfolio" class="btn btn--ghost">
+          <a href="/contact" class="btn btn--primary">Start a Project</a>
+          <a href="/portfolio" class="btn btn--ghost">
             See Our Work
             <span class="btn__icon"><img src="${arrowRight}" alt="" width="14" height="14" /></span>
           </a>
         </div>
       </div>
       <div class="hero__visual">
-        <img src="${heroCharacter}" alt="Celebrating team member" class="hero__character" />
+        <img src="${heroCharacter}" fetchpriority="high" decoding="sync" alt="Spectrum Agency performance marketing strategist" class="hero__character" />
       </div>
     </section>
 
@@ -300,7 +300,7 @@ const renderHome = () => `
           </h2>
           <p class="section__desc">${placeholder}</p>
         </div>
-        <a href="#/" class="btn btn--secondary">Show All</a>
+        <a href="/" class="btn btn--secondary">Show All</a>
       </div>
       <div class="projects__grid">
         ${projects
@@ -427,7 +427,7 @@ const renderHome = () => `
             <ul class="pricing-features">
               ${plan.features.map(f => `<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ${f}</li>`).join('')}
             </ul>
-            <a href="#/contact" class="btn ${plan.popular ? 'btn--secondary' : 'btn--ghost btn--outline'} btn-full">Get Started</a>
+            <a href="/contact" class="btn ${plan.popular ? 'btn--secondary' : 'btn--ghost btn--outline'} btn-full">Get Started</a>
           </div>`
           )
           .join('')}
@@ -584,7 +584,7 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
     <section class="sp-hero container">
       <div class="sp-hero__grid">
         <div class="sp-hero__image-col animate-on-scroll">
-          <img src="${details.image || caseStudy?.image || heroCharacter}" alt="${title}" class="sp-hero__image" />
+          <img src="${details.image || caseStudy?.image || heroCharacter}" alt="${title} services by Spectrum Agency" class="sp-hero__image" />
         </div>
         <div class="sp-hero__content-col animate-on-scroll" style="transition-delay: 100ms">
           <div class="sp-hero__badge">${details.badge || 'D2C SERVICES'}</div>
@@ -605,7 +605,7 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
           ` : ''}
           
           <div class="sp-hero__actions">
-            <a href="#/contact" class="btn btn--primary btn-full sp-cta-btn">Enquire Now</a>
+            <a href="/contact" class="btn btn--primary btn-full sp-cta-btn">Enquire Now</a>
             <button class="sp-view-details" onclick="document.getElementById('details').scrollIntoView({behavior: 'smooth'})">View full details</button>
           </div>
         </div>
@@ -633,7 +633,7 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
         </h1>
         <p class="hero__text" style="margin: 24px auto;">${description}</p>
         <div class="hero__actions" style="justify-content: center;">
-          <a href="#/contact" class="btn btn--primary">Get Started</a>
+          <a href="/contact" class="btn btn--primary">Get Started</a>
         </div>
       </div>
     </section>
@@ -705,7 +705,7 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
             </div>
           </div>
           ` : ''}
-          ${caseStudy.slug ? `<a href="#/work/${caseStudy.slug}" class="btn btn--outline" style="margin-top: 24px;">Read Full Case Study</a>` : ''}
+          ${caseStudy.slug ? `<a href="/work/${caseStudy.slug}" class="btn btn--outline" style="margin-top: 24px;">Read Full Case Study</a>` : ''}
 
         </div>
       </div>
@@ -717,7 +717,7 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
         <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
           <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your ${title}?</h2>
           <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
-          <a href="#/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+          <a href="/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
         </div>
       </div>
     </section>
@@ -852,11 +852,11 @@ const renderCaseStudyDetail = (caseStudy) => `
           </div>
 
           <div class="cs-actions">
-            <a href="#/contact" class="cs-btn cs-btn--outline">
+            <a href="/contact" class="cs-btn cs-btn--outline">
               Send a message
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
             </a>
-            <a href="#/contact" class="cs-btn cs-btn--solid">
+            <a href="/contact" class="cs-btn cs-btn--solid">
               Book a call
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
             </a>
@@ -935,7 +935,7 @@ const renderCaseStudyDetail = (caseStudy) => `
           <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
             <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your brand?</h2>
             <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
-            <a href="#/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+            <a href="/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
           </div>
         </div>
       </section>
@@ -1024,7 +1024,7 @@ const renderPortfolioPage = () => {
           <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
             <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your brand?</h2>
             <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
-            <a href="#/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+            <a href="/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
           </div>
         </div>
       </section>
@@ -1033,11 +1033,11 @@ const renderPortfolioPage = () => {
 };
 
 const pages = {
-  '#/work/bounce': () => renderCaseStudyDetail(bounceCaseStudy),
-  '#/work/mizuai': () => renderCaseStudyDetail(mizuaiCaseStudy),
-  '#/work/mrsam': () => renderCaseStudyDetail(mrsamCaseStudy),
+  '/work/bounce': () => renderCaseStudyDetail(bounceCaseStudy),
+  '/work/mizuai': () => renderCaseStudyDetail(mizuaiCaseStudy),
+  '/work/mrsam': () => renderCaseStudyDetail(mrsamCaseStudy),
 
-  '#/performance-marketing': () => renderServicePage(
+  '/performance-marketing': () => renderServicePage(
     'Performance Marketing',
     'Data-driven campaigns designed to maximize ROI and scale your business efficiently across all digital channels.',
     [
@@ -1140,7 +1140,7 @@ const pages = {
       ]
     }
   ),
-  '#/social-media-marketing': () => renderServicePage(
+  '/social-media-marketing': () => renderServicePage(
     'Social Media Marketing',
     'Build a loyal community and drive engagement with authentic, platform-native content strategies.',
     [
@@ -1206,7 +1206,7 @@ const pages = {
       ]
     }
   ),
-  '#/content-marketing': () => renderServicePage(
+  '/content-marketing': () => renderServicePage(
     'Content Marketing',
     'Tell your brand story effectively with high-quality, SEO-optimized content that educates and converts.',
     [
@@ -1260,7 +1260,7 @@ const pages = {
       ]
     }
   ),
-  '#/shopify-development': () => renderServicePage(
+  '/shopify-development': () => renderServicePage(
     'Shopify Development',
     'Custom, high-converting ecommerce experiences built on Shopify Plus.',
     [
@@ -1316,7 +1316,7 @@ const pages = {
       ]
     }
   ),
-  '#/app-development': () => renderServicePage(
+  '/app-development': () => renderServicePage(
     'App Development',
     'Native and cross-platform mobile applications that users love to engage with.',
     [
@@ -1340,7 +1340,7 @@ const pages = {
       ]
     }
   ),
-  '#/website-development': () => renderServicePage(
+  '/website-development': () => renderServicePage(
     'Website Development',
     'Fast, accessible, and stunning websites that serve as the foundation of your digital presence.',
     [
@@ -1369,7 +1369,7 @@ const pages = {
       }
     }
   ),
-  '#/software-development': () => renderServicePage(
+  '/software-development': () => renderServicePage(
     'Software Development',
     'Custom web applications and SaaS platforms engineered for scale and security.',
     [
@@ -1397,7 +1397,7 @@ const pages = {
       }
     }
   ),
-  '#/crm-development': () => renderServicePage(
+  '/crm-development': () => renderServicePage(
     'CRM Development',
     'Customized customer relationship management tools to streamline your operations.',
     [
@@ -1409,50 +1409,105 @@ const pages = {
     {
       badge: 'DEVELOPMENT SERVICES',
       image: '/case-studies/mrsam/image.png',
-      variants: [
-        'Salesforce',
-        'HubSpot',
-        'Custom CRM'
-      ],
-      bullets: [
-        'Custom CRM Solutions 💼',
-        'Workflow Automation ⚙️',
-        'Sales Pipeline Tracking 📈',
-        '3rd-party Integrations 🔌'
-      ],
-      sections: [
-        {
-          title: 'Optimize your sales engine',
-          content: `
-            <div class="sp-grid sp-grid--2col">
-              <div class="sp-card">
-                <div class="sp-card__icon">📊</div>
-                <h3 class="sp-card__title">Data Centralization</h3>
-                <p class="sp-card__desc">Bring all your customer data into one unified, actionable dashboard.</p>
-              </div>
-              <div class="sp-card">
-                <div class="sp-card__icon">⚡</div>
-                <h3 class="sp-card__title">Automated Workflows</h3>
-                <p class="sp-card__desc">Eliminate manual data entry and let your sales team focus on closing deals.</p>
-              </div>
-            </div>
-          `
-        }
-      ]
+      variants: ['Salesforce', 'HubSpot', 'Custom CRM'],
+      bullets: ['Custom CRM Solutions 💼', 'Workflow Automation ⚙️', 'Sales Pipeline Tracking 📈', '3rd-party Integrations 🔌'],
+      sections: []
     }
   ),
-  '#/contact': renderContactPage,
-  '#/portfolio': renderPortfolioPage
+  '/google-ads': () => renderServicePage(
+    'Google Ads',
+    'Maximize your ROI with data-driven Google Ads and PPC strategies designed for high-intent searches.',
+    [
+      { title: 'Search Campaigns', desc: 'Capture high-intent traffic actively searching for your services.' },
+      { title: 'Display Network', desc: 'Build brand awareness with targeted visual ads across the web.' },
+      { title: 'Performance Max', desc: 'Leverage Google AI to find converting customers across all channels.' }
+    ],
+    null,
+    {
+      image: '/images/services/perf-marketing.jpg',
+      variants: ['Search Ads', 'Display Ads', 'Shopping Ads'],
+      bullets: ['Keyword Optimization 🔑', 'A/B Testing 📊', 'Conversion Tracking 📈', 'Maximized ROAS 💰'],
+      sections: []
+    }
+  ),
+  '/meta-ads': () => renderServicePage(
+    'Meta Ads',
+    'Scale your e-commerce and lead generation with high-converting Meta Ads.',
+    [
+      { title: 'Facebook Ads', desc: 'Reach a massive audience with highly targeted demographic and interest-based campaigns.' },
+      { title: 'Instagram Ads', desc: 'Visually stunning campaigns that drive engagement and sales.' },
+      { title: 'Retargeting', desc: 'Bring back lost visitors with dynamic product ads and custom offers.' }
+    ],
+    null,
+    {
+      image: '/images/services/perf-marketing.jpg',
+      variants: ['Facebook Ads', 'Instagram Reels', 'Retargeting'],
+      bullets: ['Audience Targeting 🎯', 'Creative Testing 🧪', 'Pixel Tracking 📈', 'Scalable Growth 🚀'],
+      sections: []
+    }
+  ),
+  '/seo': () => renderServicePage(
+    'Search Engine Optimization',
+    'Increase organic traffic and dominate search rankings with our expert SEO strategies.',
+    [
+      { title: 'On-Page SEO', desc: 'Optimize your website structure, meta tags, and content for maximum visibility.' },
+      { title: 'Off-Page SEO', desc: 'Build high-quality backlinks and establish domain authority.' },
+      { title: 'Technical SEO', desc: 'Improve site speed, mobile-friendliness, and crawlability.' }
+    ],
+    null,
+    {
+      image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/Content_marketing.png?v=1743663988',
+      variants: ['Technical SEO', 'Local SEO', 'Content Strategy'],
+      bullets: ['Keyword Research 🔍', 'Link Building 🔗', 'Performance Audits 📊', 'Organic Traffic 📈'],
+      sections: []
+    }
+  ),
+  '/lead-generation': () => renderServicePage(
+    'Lead Generation',
+    'Drive high-quality, intent-driven leads that convert into actual business growth.',
+    [
+      { title: 'B2B Lead Gen', desc: 'Target decision-makers with precision LinkedIn and Google Ads campaigns.' },
+      { title: 'B2C Lead Gen', desc: 'Capture consumer interest with engaging Meta and TikTok campaigns.' },
+      { title: 'Landing Page Optimization', desc: 'Convert clicks into leads with high-performing, optimized landing pages.' }
+    ],
+    null,
+    {
+      image: '/images/services/perf-marketing.jpg',
+      variants: ['B2B Leads', 'B2C Leads', 'Funnel Optimization'],
+      bullets: ['High-Intent Leads 🎯', 'CRM Integration 🔌', 'Cost-Per-Lead Optimization 📉', 'Scalable Pipelines 🚀'],
+      sections: []
+    }
+  ),
+  '/about': renderHome, // Render home for about for now
+  '/case-studies': renderPortfolioPage,
+  '/contact': renderContactPage,
+  '/portfolio': renderPortfolioPage,
+  '/blog': () => renderServicePage('Blog', 'Insights and strategies from our team.', [], null, { image: '', variants: [], bullets: [], sections: [] })
 };
 
+const render404Page = () => `
+  <main class="container animate-on-scroll" style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+    <h1 style="font-size: clamp(4rem, 10vw, 8rem); font-weight: 800; line-height: 1; margin-bottom: 24px; background: var(--primary-gradient); -webkit-background-clip: text; color: transparent;">404</h1>
+    <h2 style="font-size: 2rem; margin-bottom: 24px;">Oops! Page not found.</h2>
+    <p style="color: var(--text-muted); max-width: 500px; margin-bottom: 40px;">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+      <a href="/" class="btn btn--primary">Back to Homepage</a>
+      <a href="/performance-marketing" class="btn btn--outline">Performance Marketing</a>
+    </div>
+  </main>
+`;
+
 const renderApp = () => {
-  const path = window.location.hash || '#/';
+  const path = window.location.pathname || '/';
   let content = '';
   
-  if (pages[path]) {
+  if (path === '/' || path === '') {
+    content = renderHome();
+  } else if (pages[path]) {
     content = pages[path]();
   } else {
-    content = renderHome(); // Fallback to home
+    content = render404Page();
+    document.title = '404 Not Found - Spectrum';
   }
 
   document.querySelector('#app').innerHTML = `
@@ -1465,41 +1520,44 @@ const renderApp = () => {
   `;
 
   // Update document title and SEO meta tags dynamically
-  const h1 = document.querySelector('h1');
-  const pageTitle = h1 ? h1.textContent.trim() : 'Digital Agency';
-  document.title = pageTitle + ' - Spectrum';
-
-  let keywords = 'Digital Agency, Spectrum, Web Design, E-commerce, App Development, Software Development, Performance Marketing';
-  let description = 'Spectrum is a premium digital agency offering expert solutions.';
+  // Dynamic SEO Engine for Routes
+  let title = 'Spectrum Agency | Performance Marketing & Digital Growth Agency';
+  let description = 'Spectrum Agency helps brands grow with performance marketing, paid advertising, SEO, social media, creative strategy, and data-driven digital marketing.';
+  let keywords = 'Performance Marketing, Digital Growth, Spectrum Agency, Paid Advertising, SEO, Social Media';
   
-  if (path.includes('performance-marketing')) {
-    keywords = 'Performance Marketing, Meta Ads, Google Ads, ROAS, Media Buying, Growth Marketing, PPC, Spectrum Agency';
-    description = 'Scale your revenue with expert Performance Marketing, Media Buying, and data-driven ad strategies by Spectrum.';
-  } else if (path.includes('social-media')) {
-    keywords = 'Social Media Marketing, SMM, Instagram Marketing, Social Media Management, Content Creation, Spectrum';
-    description = 'Build your brand and engage your audience with professional Social Media Marketing from Spectrum.';
-  } else if (path.includes('content-marketing')) {
-    keywords = 'Content Marketing, SEO, Copywriting, Blog Writing, Content Strategy, Digital Content, Spectrum';
-    description = 'Drive organic growth and authority with tailored Content Marketing strategies.';
-  } else if (path.includes('shopify')) {
-    keywords = 'Shopify Development, Shopify Plus, E-commerce Store Setup, Custom Shopify Themes, E-commerce Agency, Spectrum';
-    description = 'Launch and scale your online store with our expert Shopify Development services.';
-  } else if (path.includes('app-development')) {
-    keywords = 'App Development, iOS App Development, Android Apps, Flutter, React Native, Mobile App Agency, Spectrum';
-    description = 'Build powerful, scalable mobile applications for iOS and Android with Spectrum.';
-  } else if (path.includes('web-development')) {
-    keywords = 'Website Development, Custom Web Design, Next.js, React, Frontend Development, Web Agency, Spectrum';
-    description = 'Create stunning, high-performance websites optimized for conversions.';
-  } else if (path.includes('software-development')) {
-    keywords = 'Custom Software Development, SaaS Development, Enterprise Software, Web Applications, Spectrum';
-    description = 'Robust custom software development and scalable SaaS solutions tailored to your business needs.';
-  } else if (path.includes('crm')) {
-    keywords = 'CRM Development, Custom CRM, HubSpot Integration, Salesforce Setup, CRM Agency, Spectrum';
-    description = 'Streamline your sales and customer relations with custom CRM development and integrations.';
-  } else if (path.includes('portfolio') || path.includes('work')) {
-    keywords = 'UGC Portfolio, Agency Portfolio, Case Studies, Work Examples, Performance Marketing Case Studies';
-    description = 'Explore our portfolio of successful projects, UGC videos, and case studies.';
+  if (path === '/performance-marketing') {
+    title = 'Performance Marketing Agency | Spectrum Agency';
+    description = 'Drive measurable growth with Spectrum Agency\\'s performance marketing strategies across paid advertising, conversion optimization, analytics, and customer acquisition.';
+  } else if (path === '/google-ads') {
+    title = 'Google Ads Agency | PPC & Performance Marketing | Spectrum Agency';
+    description = 'Maximize your ROI with data-driven Google Ads and PPC strategies by Spectrum Agency.';
+  } else if (path === '/meta-ads') {
+    title = 'Meta Ads Agency | Facebook & Instagram Advertising | Spectrum Agency';
+    description = 'Scale your e-commerce and lead generation with high-converting Meta Ads by Spectrum Agency.';
+  } else if (path === '/social-media-marketing') {
+    title = 'Social Media Marketing Agency | Spectrum Agency';
+    description = 'Build brand loyalty and engage your community with strategic Social Media Marketing by Spectrum Agency.';
+  } else if (path === '/seo') {
+    title = 'SEO Agency | Search Engine Optimization Services | Spectrum Agency';
+    description = 'Increase organic traffic and dominate search rankings with our expert SEO strategies.';
+  } else if (path === '/lead-generation') {
+    title = 'Lead Generation Agency | High-Intent Leads | Spectrum Agency';
+    description = 'Drive high-quality, intent-driven leads that convert into actual business growth.';
+  } else if (path === '/content-marketing') {
+    title = 'Content Marketing Agency | Content Strategy & Growth | Spectrum Agency';
+    description = 'Establish authority and drive organic growth through tailored, high-value Content Marketing.';
+  } else if (path === '/about') {
+    title = 'About Spectrum Agency | Digital Growth & Performance Marketing';
+    description = 'Learn about Spectrum Agency, our mission, our team, and how we drive digital growth for brands.';
+  } else if (path === '/contact') {
+    title = 'Contact Spectrum Agency | Start Growing Your Business';
+    description = 'Get in touch with Spectrum Agency to discuss your performance marketing and digital growth needs.';
+  } else if (path.startsWith('/case-studies') || path === '/portfolio') {
+    title = 'Performance Marketing Case Studies | Spectrum Agency';
+    description = 'Explore our portfolio and see how we have driven measurable growth for our clients.';
   }
+
+  document.title = title;
 
   let metaKeywords = document.querySelector('meta[name="keywords"]');
   if (metaKeywords) metaKeywords.setAttribute('content', keywords);
@@ -1511,7 +1569,16 @@ const renderApp = () => {
   if (ogDescription) ogDescription.setAttribute('content', description);
   
   let ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', document.title);
+  if (ogTitle) ogTitle.setAttribute('content', title);
+  
+  // Update Canonical URL
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute('href', 'https://spectrumagency.vercel.app' + (path === '/' ? '' : path));
 
   // Re-initialize all scripts after DOM updates
   initMobileNav();
@@ -1520,15 +1587,29 @@ const renderApp = () => {
   initScrollAnimations();
   initVariants();
   initVideos();
-  if (path === '#/' || path === '') {
+  if (path === '/' || path === '') {
     initUGCAnimations();
   }
 };
 
 // Listen for route changes
-window.addEventListener('hashchange', () => {
+window.addEventListener('popstate', () => {
   window.scrollTo(0, 0);
   renderApp();
+});
+
+// Intercept internal links for SPA routing
+document.addEventListener('click', e => {
+  const link = e.target.closest('a');
+  if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('/')) {
+    e.preventDefault();
+    const url = link.getAttribute('href');
+    if (window.location.pathname !== url) {
+      window.history.pushState(null, '', url);
+      window.scrollTo(0, 0);
+      renderApp();
+    }
+  }
 });
 
 // Initial render
