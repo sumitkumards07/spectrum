@@ -3,9 +3,10 @@ if (import.meta.env.DEV) reticle.connect();
 
 import './style.css'
 
+import { renderList, staggerDelay, cornerFrame, cornerFrameDecor, sectionTitle, ugcVideoCard, marqueeTrack } from './templates.js'
+
 import logo from './assets/figma/logo.png'
 import heroCharacter from './assets/figma/hero-character.png'
-import heroHighlight from './assets/figma/hero-highlight.svg'
 import arrowRight from './assets/figma/arrow-right.svg'
 import navLine from './assets/figma/nav-line.svg'
 import dotsDecor from './assets/figma/dots-decor.svg'
@@ -27,9 +28,6 @@ import team1 from './assets/figma/team-1.png'
 import team2 from './assets/figma/team-2.png'
 import team3 from './assets/figma/team-3.png'
 import team4 from './assets/figma/team-4.png'
-
-const cornerFrame = (text, className = '') =>
-  `<span class="corner-frame ${className}"><span class="corner-frame__border"></span><img src="${heroHighlight}" alt="" class="corner-frame__dots" /><span class="corner-frame__text">${text}</span></span>`
 
 const placeholder =
   'Spectrum is an elite software development agency dedicated to engineering digital legacies for visionary founders. We specialize in transforming complex business challenges into scalable, high-performance digital solutions.'
@@ -85,6 +83,15 @@ const pricingPlans = [
     popular: false,
     icon: '🏢'
   }
+]
+
+const ugcVideos = [
+  { src: '/04987ebaeecc41f0b95499ca88dbb27f.mp4', poster: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-1.webp' },
+  { src: '/3189195aa7f94f6abb1eded2a175fe5b.mp4', poster: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-2.webp' },
+  { src: '/e60d777ba5874f67a00e13aa18cec359.mp4', poster: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-3.webp' },
+  { src: '/4d99e36ce5a84d8cb8ee5af4560dd757.mp4', poster: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-4.webp' },
+  { src: '/506bf5a507234db0b741b33cfe96607f.mp4', poster: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-5.webp' },
+  { src: '/6ca274d21baa4d10ada403454ad284b8.mp4', poster: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-6.webp' },
 ]
 
 const faqData = [
@@ -275,18 +282,17 @@ const renderHome = () => `
     <section class="stats container" aria-label="Statistics">
       <img src="${dotsDecor}" alt="" class="stats__decor" />
       <div class="stats__grid">
-        ${stats
-          .map(
-            (s, i) => `
-          <div class="stats__item animate-on-scroll" style="transition-delay: ${i * 100}ms">
+        ${renderList(
+          stats,
+          (s, i) => `
+          <div class="stats__item animate-on-scroll" ${staggerDelay(i)}>
             <span class="stats__value">${s.value}</span>
             <span class="stats__label">
               <span>${s.label[0]}</span>
               <span>${s.label[1]}</span>
             </span>
           </div>`
-          )
-          .join('')}
+        )}
       </div>
       <img src="${dotsDecor}" alt="" class="stats__decor stats__decor--flip" />
     </section>
@@ -294,18 +300,15 @@ const renderHome = () => `
     <section id="portfolio" class="section projects container">
       <div class="section__header">
         <div class="section__intro animate-on-scroll">
-          <h2 class="section__title">
-            Our Projects
-            <img src="${dotsDecor}" alt="" class="section__dots" />
-          </h2>
+          ${sectionTitle('Our Projects')}
           <p class="section__desc">${placeholder}</p>
         </div>
         <a href="#/" class="btn btn--secondary">Show All</a>
       </div>
       <div class="projects__grid">
-        ${projects
-          .map(
-            (p) => `
+        ${renderList(
+          projects,
+          (p) => `
           <article class="project-card animate-on-scroll">
             <img src="${p.image}" alt="${p.title}" class="project-card__image" />
             <div class="project-card__overlay"></div>
@@ -314,8 +317,7 @@ const renderHome = () => `
               <p>${p.category}</p>
             </div>
           </article>`
-          )
-          .join('')}
+        )}
       </div>
     </section>
 
@@ -329,37 +331,7 @@ const renderHome = () => `
           <h2>CONTENT</h2>
         </div>
         <div class="ugc-list-wrap">
-          <div class="ugc-item video-card-1">
-            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-1.webp">
-              <source src="/04987ebaeecc41f0b95499ca88dbb27f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="ugc-item video-card-2">
-            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-2.webp">
-              <source src="/3189195aa7f94f6abb1eded2a175fe5b.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="ugc-item video-card-3">
-            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-3.webp">
-              <source src="/e60d777ba5874f67a00e13aa18cec359.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="ugc-item video-card-4">
-            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-4.webp">
-              <source src="/4d99e36ce5a84d8cb8ee5af4560dd757.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="ugc-item video-card-5">
-            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-5.webp">
-              <source src="/506bf5a507234db0b741b33cfe96607f.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="ugc-item video-card-6">
-            <video class="video-thumbnail" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0722/3194/4424/files/video-6.webp">
-              <source src="/6ca274d21baa4d10ada403454ad284b8.mp4" type="video/mp4">
-            </video>
-          </div>
+          ${renderList(ugcVideos, ugcVideoCard)}
         </div>
       </div>
     </div>
@@ -374,10 +346,7 @@ const renderHome = () => `
       <div class="container">
         <div class="section__header">
           <div class="section__intro animate-on-scroll">
-            <h2 class="section__title">
-              Graphic Portfolio
-              <img src="${dotsDecor}" alt="" class="section__dots" />
-            </h2>
+            ${sectionTitle('Graphic Portfolio')}
             <p class="section__desc">Check out some of our best graphic design and branding work.</p>
           </div>
         </div>
@@ -385,16 +354,12 @@ const renderHome = () => `
       <div class="scrolling-portfolio-wrapper">
         <div class="scrolling-line scrolling-line-left">
           <div class="scrolling-track">
-            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
-            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
-            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+            ${marqueeTrack(featured)}
           </div>
         </div>
         <div class="scrolling-line scrolling-line-right" style="margin-top: 24px;">
           <div class="scrolling-track scrolling-track--reverse">
-            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
-            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
-            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+            ${marqueeTrack([...featured].reverse())}
           </div>
         </div>
       </div>
@@ -402,17 +367,14 @@ const renderHome = () => `
 
     <section id="pricing" class="section pricing container">
       <div class="section__intro section__intro--solo animate-on-scroll">
-        <h2 class="section__title">
-          Our Pricing & Plans
-          <img src="${dotsDecor}" alt="" class="section__dots" />
-        </h2>
+        ${sectionTitle('Our Pricing & Plans')}
         <p class="section__desc">Transparent pricing for institutional-grade development.</p>
       </div>
       <div class="pricing__grid">
-        ${pricingPlans
-          .map(
-            (plan, i) => `
-          <div class="pricing-card animate-on-scroll ${plan.popular ? 'pricing-card--popular' : ''}" style="transition-delay: ${i * 100}ms">
+        ${renderList(
+          pricingPlans,
+          (plan, i) => `
+          <div class="pricing-card animate-on-scroll ${plan.popular ? 'pricing-card--popular' : ''}" ${staggerDelay(i)}>
             ${plan.popular ? '<div class="pricing-card__badge">Most Popular</div>' : ''}
             <div class="pricing-card__icon">${plan.icon}</div>
             <h3 class="pricing-card__title">${plan.title}</h3>
@@ -425,89 +387,71 @@ const renderHome = () => `
               <span class="price-val">${plan.price}</span>
             </div>
             <ul class="pricing-features">
-              ${plan.features.map(f => `<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ${f}</li>`).join('')}
+              ${renderList(plan.features, (f) => `<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ${f}</li>`)}
             </ul>
             <a href="#/contact" class="btn ${plan.popular ? 'btn--secondary' : 'btn--ghost btn--outline'} btn-full">Get Started</a>
           </div>`
-          )
-          .join('')}
+        )}
       </div>
     </section>
 
     <section class="section achievements container">
       <div class="achievements__header animate-on-scroll">
-        <h2 class="section__title">
-          Our Achievements
-          <img src="${dotsDecor}" alt="" class="section__dots" />
-        </h2>
+        ${sectionTitle('Our Achievements')}
         <p class="section__desc">${placeholder}</p>
       </div>
       <div class="achievements__grid">
-        ${achievements
-          .map(
-            (a, i) => `
-          <div class="achievements__item animate-on-scroll" style="transition-delay: ${i * 100}ms">
+        ${renderList(
+          achievements,
+          (a, i) => `
+          <div class="achievements__item animate-on-scroll" ${staggerDelay(i)}>
             <span class="achievements__value">${a.value}</span>
             <span class="achievements__label">${a.label}</span>
           </div>`
-          )
-          .join('')}
+        )}
       </div>
     </section>
 
     <section class="section team">
       <div class="container">
-        <h2 class="section__title animate-on-scroll">
-          Our Team Members
-          <img src="${dotsDecor}" alt="" class="section__dots" />
-        </h2>
+        ${sectionTitle('Our Team Members', 'animate-on-scroll')}
         <div class="team__list">
-          ${team
-            .map(
-              (m) => `
+          ${renderList(
+            team,
+            (m) => `
             <div class="team__row animate-on-scroll ${m.active ? 'team__row--active' : ''}" role="button" tabindex="0" data-team-row>
               <div class="team__member">
                 <img src="${m.avatar}" alt="${m.name}" class="team__avatar" />
-                <span class="team__name corner-frame ${m.active ? 'team__name--active' : ''}">
-                  <span class="corner-frame__border"></span>
-                  <img src="${heroHighlight}" alt="" class="corner-frame__dots" />
-                  <span class="corner-frame__text">${m.name}</span>
-                </span>
+                ${cornerFrame(m.name, `team__name ${m.active ? 'team__name--active' : ''}`)}
               </div>
               <span class="team__role">${m.role}</span>
             </div>`
-            )
-            .join('')}
+          )}
         </div>
       </div>
     </section>
 
     <section class="section testimonials">
       <div class="container">
-        <h2 class="section__title animate-on-scroll">
-          Experiences That Inspire
-          <img src="${dotsDecor}" alt="" class="section__dots" />
-        </h2>
+        ${sectionTitle('Experiences That Inspire', 'animate-on-scroll')}
         <div class="testimonials__avatars">
-          ${testimonialAvatars
-            .map(
-              (a) => `
+          ${renderList(
+            testimonialAvatars,
+            (a) => `
             <img
               src="${a.src}"
               alt=""
               class="testimonials__avatar ${a.active ? 'testimonials__avatar--active' : ''}"
               style="width:${a.size}px;height:${a.size}px"
             />`
-            )
-            .join('')}
+          )}
         </div>
         <div class="testimonials__carousel" data-carousel>
-          ${testimonials
-            .map(
-              (t, i) => `
+          ${renderList(
+            testimonials,
+            (t, i) => `
             <article class="testimonial-card corner-frame ${i === 1 ? 'testimonial-card--active' : ''}" data-card="${i}">
-              <span class="corner-frame__border"></span>
-              <img src="${heroHighlight}" alt="" class="corner-frame__dots" />
+              ${cornerFrameDecor()}
               <div class="testimonial-card__inner">
                 <header class="testimonial-card__header">
                   <h3>${t.name}</h3>
@@ -520,8 +464,7 @@ const renderHome = () => `
                 <p>${t.text}</p>
               </div>
             </article>`
-            )
-            .join('')}
+          )}
         </div>
         <div class="testimonials__nav">
           <button type="button" class="btn btn--secondary btn--icon" data-carousel-prev aria-label="Previous">‹</button>
@@ -555,8 +498,8 @@ const renderHome = () => `
           </div>
           <div class="faq-right">
             <div class="faq-items">
-              ${faqData.map((faq, i) => `
-                <div class="faq-item-wrapper animate-on-scroll" style="transition-delay: ${i * 100}ms">
+              ${renderList(faqData, (faq, i) => `
+                <div class="faq-item-wrapper animate-on-scroll" ${staggerDelay(i)}>
                   <button class="faq-item-button" aria-expanded="false">
                     <span class="faq-item-text">${faq.question}</span>
                     <span class="faq-icon-container">
@@ -569,7 +512,7 @@ const renderHome = () => `
                   </div>
                   <hr class="faq-divider" />
                 </div>
-              `).join('')}
+              `)}
             </div>
           </div>
         </div>
@@ -1584,6 +1527,12 @@ function initUGCAnimations() {
   const popupVideo = popup.querySelector('video');
   const closePopup = document.querySelector('.close-popup');
 
+  const closeVideoPopup = () => {
+    popup.classList.remove('active');
+    popupVideo.pause();
+    popupVideo.currentTime = 0;
+  };
+
   videoItems.forEach((item) => {
     item.addEventListener('click', function() {
       const sourceVideo = this.querySelector('video source');
@@ -1595,26 +1544,14 @@ function initUGCAnimations() {
     });
   });
 
-  closePopup.addEventListener('click', function() {
-    popup.classList.remove('active');
-    popupVideo.pause();
-    popupVideo.currentTime = 0;
-  });
+  closePopup.addEventListener('click', closeVideoPopup);
 
   popup.addEventListener('click', function(e) {
-    if (e.target === popup) {
-      popup.classList.remove('active');
-      popupVideo.pause();
-      popupVideo.currentTime = 0;
-    }
+    if (e.target === popup) closeVideoPopup();
   });
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && popup.classList.contains('active')) {
-      popup.classList.remove('active');
-      popupVideo.pause();
-      popupVideo.currentTime = 0;
-    }
+    if (e.key === 'Escape' && popup.classList.contains('active')) closeVideoPopup();
   });
 
   const videoCards = document.querySelectorAll('.video-thumbnail');
@@ -1628,66 +1565,38 @@ function initUGCAnimations() {
     });
   });
 
+  const headingScrollTrigger = () => ({ trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 });
+
+  const animateHeadings = (method, offsets) => {
+    offsets.forEach((x, i) => {
+      gsap[method](`.ugc-wrapper h2:nth-child(${i + 1})`, { x, scrollTrigger: headingScrollTrigger() });
+    });
+  };
+
+  const animateVideoCards = (cardVars) => {
+    const scrollTriggerConfig = {
+      trigger: '.ugc-wrapper',
+      start: 'top top',
+      end: '+=300%',
+      scrub: 1,
+      pin: true,
+    };
+    const UGC_TL = gsap.timeline({ scrollTrigger: scrollTriggerConfig, defaults: { duration: 1, ease: 'power2.inOut' } });
+    cardVars.forEach((vars, i) => {
+      UGC_TL.from(`.video-card-${i + 1}`, vars, i === 0 ? undefined : '-=0.5');
+    });
+  };
+
   let mm = gsap.matchMedia();
 
   mm.add('(min-width: 769px)', () => {
-    gsap.to('.ugc-wrapper h2:nth-child(1)', {
-      x: 200,
-      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
-    });
-    gsap.to('.ugc-wrapper h2:nth-child(2)', {
-      x: -200,
-      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
-    });
-    gsap.to('.ugc-wrapper h2:nth-child(3)', {
-      x: 300,
-      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
-    });
-
-    const scrollTriggerConfig = {
-      trigger: '.ugc-wrapper',
-      start: 'top top',
-      end: '+=300%', 
-      scrub: 1,
-      pin: true,
-    };
-    const UGC_TL = gsap.timeline({ scrollTrigger: scrollTriggerConfig, defaults: { duration: 1, ease: 'power2.inOut' } });
-    UGC_TL.from('.video-card-1', { y: '130%', x: '170%' })
-      .from('.video-card-2', { y: '130%', x: '130%' }, '-=0.5')
-      .from('.video-card-3', { y: '130%', x: '50%' }, '-=0.5')
-      .from('.video-card-4', { y: '130%', x: '-20%' }, '-=0.5')
-      .from('.video-card-5', { y: '130%', x: '-100%' }, '-=0.5')
-      .from('.video-card-6', { y: '130%', x: '-150%' }, '-=0.5');
+    animateHeadings('to', [200, -200, 300]);
+    animateVideoCards(['170%', '130%', '50%', '-20%', '-100%', '-150%'].map((x) => ({ y: '130%', x })));
   });
 
   mm.add('(max-width: 768px)', () => {
-    gsap.from('.ugc-wrapper h2:nth-child(1)', {
-      x: 100,
-      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
-    });
-    gsap.from('.ugc-wrapper h2:nth-child(2)', {
-      x: -100,
-      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
-    });
-    gsap.from('.ugc-wrapper h2:nth-child(3)', {
-      x: 200,
-      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
-    });
-
-    const scrollTriggerConfig = {
-      trigger: '.ugc-wrapper',
-      start: 'top top',
-      end: '+=300%', 
-      scrub: 1,
-      pin: true,
-    };
-    const UGC_TL = gsap.timeline({ scrollTrigger: scrollTriggerConfig, defaults: { duration: 1, ease: 'power2.inOut' } });
-    UGC_TL.from('.video-card-1', { y: '180%', opacity: 1 })
-      .from('.video-card-2', { y: '180%', opacity: 1 }, '-=0.5')
-      .from('.video-card-3', { y: '180%', opacity: 1 }, '-=0.5')
-      .from('.video-card-4', { y: '180%', opacity: 1 }, '-=0.5')
-      .from('.video-card-5', { y: '180%', opacity: 1 }, '-=0.5')
-      .from('.video-card-6', { y: '180%', opacity: 1 }, '-=0.5');
+    animateHeadings('from', [100, -100, 200]);
+    animateVideoCards(Array.from({ length: 6 }, () => ({ y: '180%', opacity: 1 })));
   });
 }
 
