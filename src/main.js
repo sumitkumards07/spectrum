@@ -1464,13 +1464,54 @@ const renderApp = () => {
     </div>
   `;
 
-  // Update document title for basic SEO
+  // Update document title and SEO meta tags dynamically
   const h1 = document.querySelector('h1');
-  if (h1) {
-    document.title = h1.textContent.trim() + ' - Spectrum';
-  } else {
-    document.title = 'Spectrum';
+  const pageTitle = h1 ? h1.textContent.trim() : 'Digital Agency';
+  document.title = pageTitle + ' - Spectrum';
+
+  let keywords = 'Digital Agency, Spectrum, Web Design, E-commerce, App Development, Software Development, Performance Marketing';
+  let description = 'Spectrum is a premium digital agency offering expert solutions.';
+  
+  if (path.includes('performance-marketing')) {
+    keywords = 'Performance Marketing, Meta Ads, Google Ads, ROAS, Media Buying, Growth Marketing, PPC, Spectrum Agency';
+    description = 'Scale your revenue with expert Performance Marketing, Media Buying, and data-driven ad strategies by Spectrum.';
+  } else if (path.includes('social-media')) {
+    keywords = 'Social Media Marketing, SMM, Instagram Marketing, Social Media Management, Content Creation, Spectrum';
+    description = 'Build your brand and engage your audience with professional Social Media Marketing from Spectrum.';
+  } else if (path.includes('content-marketing')) {
+    keywords = 'Content Marketing, SEO, Copywriting, Blog Writing, Content Strategy, Digital Content, Spectrum';
+    description = 'Drive organic growth and authority with tailored Content Marketing strategies.';
+  } else if (path.includes('shopify')) {
+    keywords = 'Shopify Development, Shopify Plus, E-commerce Store Setup, Custom Shopify Themes, E-commerce Agency, Spectrum';
+    description = 'Launch and scale your online store with our expert Shopify Development services.';
+  } else if (path.includes('app-development')) {
+    keywords = 'App Development, iOS App Development, Android Apps, Flutter, React Native, Mobile App Agency, Spectrum';
+    description = 'Build powerful, scalable mobile applications for iOS and Android with Spectrum.';
+  } else if (path.includes('web-development')) {
+    keywords = 'Website Development, Custom Web Design, Next.js, React, Frontend Development, Web Agency, Spectrum';
+    description = 'Create stunning, high-performance websites optimized for conversions.';
+  } else if (path.includes('software-development')) {
+    keywords = 'Custom Software Development, SaaS Development, Enterprise Software, Web Applications, Spectrum';
+    description = 'Robust custom software development and scalable SaaS solutions tailored to your business needs.';
+  } else if (path.includes('crm')) {
+    keywords = 'CRM Development, Custom CRM, HubSpot Integration, Salesforce Setup, CRM Agency, Spectrum';
+    description = 'Streamline your sales and customer relations with custom CRM development and integrations.';
+  } else if (path.includes('portfolio') || path.includes('work')) {
+    keywords = 'UGC Portfolio, Agency Portfolio, Case Studies, Work Examples, Performance Marketing Case Studies';
+    description = 'Explore our portfolio of successful projects, UGC videos, and case studies.';
   }
+
+  let metaKeywords = document.querySelector('meta[name="keywords"]');
+  if (metaKeywords) metaKeywords.setAttribute('content', keywords);
+
+  let metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) metaDescription.setAttribute('content', description);
+  
+  let ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) ogDescription.setAttribute('content', description);
+  
+  let ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', document.title);
 
   // Re-initialize all scripts after DOM updates
   initMobileNav();
