@@ -713,10 +713,11 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
     ` : ''}
     
     <section class="section cta container" style="margin-bottom: 120px;">
-      <div class="cta__card" style="margin-top: 64px;">
+      <div class="cta__card sp-cta" style="margin-top: 64px;">
         <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
-          <h2 class="cta__title" style="margin-bottom: 24px;">Ready to elevate your ${title.toLowerCase()}?</h2>
-          <a href="#/contact" class="btn btn--primary btn--icon" style="margin: 0 auto;">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+          <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your ${title}?</h2>
+          <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
+          <a href="#/contact" class="btn btn--primary btn--icon" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
         </div>
       </div>
     </section>
@@ -929,6 +930,15 @@ const renderCaseStudyDetail = (caseStudy) => `
         </div>
         ` : ''}
       </div>
+      <section class="section cta container" style="margin-bottom: 120px; padding: 0;">
+        <div class="cta__card sp-cta" style="margin-top: 64px;">
+          <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your brand?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
+            <a href="#/contact" class="btn btn--primary btn--icon" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+          </div>
+        </div>
+      </section>
     </article>
   </main>
 `;
@@ -1009,6 +1019,15 @@ const renderPortfolioPage = () => {
           </div>
         `).join('')}
       </div>
+      <section class="section cta container" style="margin-bottom: 120px;">
+        <div class="cta__card sp-cta" style="margin-top: 64px;">
+          <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your brand?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
+            <a href="#/contact" class="btn btn--primary btn--icon" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+          </div>
+        </div>
+      </section>
     </main>
   `;
 };
@@ -1028,7 +1047,7 @@ const pages = {
     ],
     null,
     {
-      image: '/images/consulting-first.jpg',
+      image: '/images/services/perf-marketing.jpg',
       variants: [
         'Performance (Google + Meta)',
         'Ads Account + Creative',
@@ -1131,7 +1150,7 @@ const pages = {
     ],
     null,
     {
-      image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/Artboard_1.png?v=1743664038',
+      image: '/images/services/social-media.jpg',
       variants: [
         'Social Media',
         'UGC',
@@ -1309,7 +1328,7 @@ const pages = {
       client: 'Bounce Daily',
       title: "India's #1 EV rental app, backed by $200M",
       description: 'We rebuilt the product that was losing half its riders before their first ride. 45% dropped off during signup alone. We rebuilt their app end to end, design and engineering together, across iOS and Android.',
-      image: '/case-studies/bounce/cover.png',
+      image: '/images/services/app-dev.jpg',
       gallery: [
         '/case-studies/bounce/sub-1.png',
         '/case-studies/bounce/sub-2.mp4'
@@ -1661,33 +1680,7 @@ function initUGCAnimations() {
   });
 
   mm.add('(max-width: 768px)', () => {
-    gsap.from('.ugc-wrapper h2:nth-child(1)', {
-      x: 100,
-      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
-    });
-    gsap.from('.ugc-wrapper h2:nth-child(2)', {
-      x: -100,
-      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
-    });
-    gsap.from('.ugc-wrapper h2:nth-child(3)', {
-      x: 200,
-      scrollTrigger: { trigger: '.ugc-wrapper', start: 'top center', end: 'bottom center', scrub: 1 }
-    });
-
-    const scrollTriggerConfig = {
-      trigger: '.ugc-wrapper',
-      start: 'top top',
-      end: '+=300%', 
-      scrub: 1,
-      pin: true,
-    };
-    const UGC_TL = gsap.timeline({ scrollTrigger: scrollTriggerConfig, defaults: { duration: 1, ease: 'power2.inOut' } });
-    UGC_TL.from('.video-card-1', { y: '180%', opacity: 1 })
-      .from('.video-card-2', { y: '180%', opacity: 1 }, '-=0.5')
-      .from('.video-card-3', { y: '180%', opacity: 1 }, '-=0.5')
-      .from('.video-card-4', { y: '180%', opacity: 1 }, '-=0.5')
-      .from('.video-card-5', { y: '180%', opacity: 1 }, '-=0.5')
-      .from('.video-card-6', { y: '180%', opacity: 1 }, '-=0.5');
+    // Mobile uses native CSS grid scrolling now, no GSAP pinning needed.
   });
 }
 
