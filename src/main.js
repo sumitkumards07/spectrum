@@ -164,7 +164,7 @@ const renderNavbar = () => `
       <a href="/contact" class="navbar__link">Contact</a>
     </nav>
     <div class="navbar__actions">
-      <a href="/contact" class="btn btn--primary navbar__cta">Get in Touch</a>
+      <a href="https://cal.com/infiniumstudio/project-consultation" target="_blank" class="btn btn--primary navbar__cta">Get in Touch</a>
       <button type="button" class="navbar__toggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -253,7 +253,7 @@ const renderHome = () => `
         </h1>
         <p class="hero__text">${placeholder}</p>
         <div class="hero__actions">
-          <a href="/contact" class="btn btn--primary">Start a Project</a>
+          <a href="https://cal.com/infiniumstudio/project-consultation" target="_blank" class="btn btn--primary">Start a Project</a>
           <a href="/portfolio" class="btn btn--ghost">
             See Our Work
             <span class="btn__icon"><img src="${arrowRight}" alt="" width="14" height="14" /></span>
@@ -710,7 +710,7 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
         <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
           <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your ${title}?</h2>
           <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
-          <a href="/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+          <a href="https://cal.com/infiniumstudio/project-consultation" target="_blank" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
         </div>
       </div>
     </section>
@@ -928,7 +928,7 @@ const renderCaseStudyDetail = (caseStudy) => `
           <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
             <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your brand?</h2>
             <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
-            <a href="/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+            <a href="https://cal.com/infiniumstudio/project-consultation" target="_blank" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
           </div>
         </div>
       </section>
@@ -1027,7 +1027,7 @@ const renderPortfolioPage = () => {
           <div class="cta__content animate-on-scroll" style="text-align: center; max-width: 600px; margin: 0 auto;">
             <h2 class="cta__title" style="margin-bottom: 24px; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px;">Ready to elevate your brand?</h2>
             <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1.1rem;">Let's build something extraordinary together.</p>
-            <a href="/contact" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
+            <a href="https://cal.com/infiniumstudio/project-consultation" target="_blank" class="btn btn--primary" style="margin: 0 auto; padding: 16px 32px; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(111,74,255,0.3);">Start a Project <img src="${arrowRight}" alt="" width="14" height="14" style="margin-left:8px;" /></a>
           </div>
         </div>
       </section>
@@ -1157,7 +1157,7 @@ const renderAboutPage = () => `
         <div class="cta__content animate-on-scroll">
           <h2 class="cta__title">Let's Build Something ${cornerFrame('Amazing', 'cta__highlight-wrap')}</h2>
           <p class="cta__text">${placeholder}</p>
-          <a href="/contact" class="btn btn--primary">Start a Project</a>
+          <a href="https://cal.com/infiniumstudio/project-consultation" target="_blank" class="btn btn--primary">Start a Project</a>
         </div>
         <img src="${heroCharacter}" alt="" class="cta__character" aria-hidden="true" />
       </div>
