@@ -1,6 +1,18 @@
 :root {
   --accent: #c70e1a;
   --accent-light: #f19594;
+  --primary: #c70e1a;
+  --primary-dark: #a00b14;
+  --primary-gradient: linear-gradient(135deg, #c70e1a 0%, #f19594 100%);
+  --bg: #ffffff;
+  --bg-alt: #fff5f5;
+  --border: #ffebeb;
+  --text: #262626;
+  --text-dark: #262626;
+  --text-muted: #737373;
+  --neutral-400: #a3a3a3;
+  --neutral-600: #525252;
+  --neutral-900: #171717;
   --neutral-800: #262626;
   --neutral-700: #404040;
   --neutral-500: #737373;
@@ -2706,4 +2718,67 @@ textarea.form-input {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* --- Simple pages (Careers, Blogs, Privacy) --- */
+.simple-page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 170px 24px 120px;
+}
+.simple-page__head { margin-bottom: 48px; }
+.simple-page__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--neutral-800);
+  line-height: 1.15;
+  margin: 20px 0 0;
+}
+.simple-page__lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--neutral-500);
+  margin: 20px 0 0;
+}
+.simple-page__body p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--neutral-500);
+  margin: 0 0 20px;
+}
+.simple-page__body a { color: var(--accent); }
+.simple-page__body ul { margin: 0 0 20px; padding-left: 20px; }
+.simple-page__body li {
+  line-height: 1.8;
+  color: var(--neutral-500);
+  margin-bottom: 10px;
+}
+
+/* --- Contact form validation & success state --- */
+.form-field-error {
+  display: block;
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+.form-input--invalid { border-color: var(--accent); }
+.form-status { color: var(--accent); margin: 16px 0 0; font-size: 0.95rem; }
+.contact-success {
+  text-align: center;
+  padding: 60px 32px;
+  background: var(--bg);
+  border-radius: 24px;
+  border: 1px solid var(--neutral-100);
+}
+.contact-success__icon { font-size: 48px; margin-bottom: 16px; }
+.contact-success h2 {
+  font-family: var(--font-heading);
+  color: var(--neutral-800);
+  margin: 0 0 12px;
+}
+.contact-success p { color: var(--neutral-500); margin: 0 0 28px; }
+
+@media (max-width: 640px) {
+  .simple-page { padding: 130px 20px 90px; }
 }

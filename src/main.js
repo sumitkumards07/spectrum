@@ -179,13 +179,13 @@ const renderNavbar = () => `
   </header>
   <div class="mobile-nav" hidden>
     <nav aria-label="Mobile">
-      <a href="/">Services</a>
+      <a href="/" class="mobile-nav__heading">Services</a>
       <a href="/performance-marketing" class="mobile-nav__sublink">- Performance Marketing</a>
       <a href="/social-media-marketing" class="mobile-nav__sublink">- Social Media Marketing</a>
       <a href="/content-marketing" class="mobile-nav__sublink">- Content Marketing</a>
       <a href="/shopify-development" class="mobile-nav__sublink">- Shopify Development</a>
       
-      <a href="/">Software Development</a>
+      <a href="/" class="mobile-nav__heading">Software Development</a>
       <a href="/app-development" class="mobile-nav__sublink">- App Development</a>
       <a href="/website-development" class="mobile-nav__sublink">- Website Development</a>
       <a href="/software-development" class="mobile-nav__sublink">- Software Development</a>
@@ -321,7 +321,7 @@ const renderHome = () => `
 
     <!-- UGC Section -->
     <div class="ugc-main-wrapper">
-      <a href="/" class="view-ugc-btn">See More</a>
+      <a href="/portfolio" class="view-ugc-btn">See More</a>
       <div class="ugc-wrapper">
         <div class="bg-content">
           <h2>SEE OUR</h2>
@@ -535,8 +535,8 @@ const renderHome = () => `
         <div class="cta__content animate-on-scroll">
           <h2 class="cta__title">Let's Build Something ${cornerFrame('Amazing', 'cta__highlight-wrap')}</h2>
           <p class="cta__text">${placeholder}</p>
-          <form class="cta__form" onsubmit="return false">
-            <input type="email" placeholder="Email" aria-label="Email address" />
+          <form class="cta__form" data-newsletter-form>
+            <input type="email" placeholder="Email" aria-label="Email address" required />
             <button type="submit" class="btn btn--primary btn--icon" aria-label="Subscribe">
               <img src="${arrowRight}" alt="" width="14" height="14" />
             </button>
@@ -606,13 +606,13 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
           
           <div class="sp-hero__actions">
             <a href="/contact" class="btn btn--primary btn-full sp-cta-btn">Enquire Now</a>
-            <button class="sp-view-details" onclick="document.getElementById('details').scrollIntoView({behavior: 'smooth'})">View full details</button>
+            ${details.sections && details.sections.length > 0 ? `<button class="sp-view-details" onclick="document.getElementById('details').scrollIntoView({behavior: 'smooth'})">View full details</button>` : ''}
           </div>
         </div>
       </div>
     </section>
     
-    ${details.sections ? `
+    ${details.sections && details.sections.length > 0 ? `
     <section id="details" class="sp-details container">
       <div class="sp-details__inner">
         ${details.sections.map((sec, i) => `
@@ -952,14 +952,17 @@ const renderContactPage = () => {
         <p class="hero__text">Let's discuss how we can grow your brand.</p>
       </div>
       <div class="contact-grid">
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted!');">
+        <form class="contact-form" data-contact-form novalidate>
+          <input type="text" name="_gotcha" data-gotcha style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-group">
             <label class="form-label" for="name">Name</label>
             <input type="text" id="name" name="name" class="form-input" placeholder="Name" required>
+            <small class="form-field-error" data-error-for="name" hidden></small>
           </div>
           <div class="form-group">
             <label class="form-label" for="email">Email *</label>
             <input type="email" id="email" name="email" class="form-input" placeholder="Email *" required>
+            <small class="form-field-error" data-error-for="email" hidden></small>
           </div>
           <div class="form-group">
             <label class="form-label" for="phone">Phone number</label>
@@ -974,7 +977,14 @@ const renderContactPage = () => {
             <textarea id="comment" name="comment" class="form-input" placeholder="Comment"></textarea>
           </div>
           <button type="submit" class="btn btn--primary btn-full form-submit">Send</button>
+          <p class="form-status" data-form-status role="status" hidden></p>
         </form>
+        <div class="contact-success" data-contact-success hidden>
+          <div class="contact-success__icon" aria-hidden="true">🎉</div>
+          <h2>Thanks, <span data-success-name>friend</span>!</h2>
+          <p>Your details have been captured. We'll get back to you within 24 hours.</p>
+          <a href="/" class="btn btn--primary">Back to Home</a>
+        </div>
       </div>
     </main>
   `;
@@ -1031,6 +1041,193 @@ const renderPortfolioPage = () => {
     </main>
   `;
 };
+
+const renderAboutPage = () => `
+  <main>
+    <section class="hero container">
+      <div class="hero__content animate-on-scroll">
+        <h1 class="hero__title">
+          The Team Behind
+          ${cornerFrame('Spectrum', 'hero__highlight-wrap')}
+        </h1>
+        <p class="hero__text">${placeholder}</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Work With Us</a>
+          <a href="/portfolio" class="btn btn--ghost">
+            See Our Work
+            <span class="btn__icon"><img src="${arrowRight}" alt="" width="14" height="14" /></span>
+          </a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <img src="${avatarCenter}" alt="Spectrum Agency team" class="hero__character" />
+      </div>
+    </section>
+
+    <section class="stats container" aria-label="Statistics">
+      <img src="${dotsDecor}" alt="" class="stats__decor" />
+      <div class="stats__grid">
+        ${stats
+          .map(
+            (s, i) => `
+          <div class="stats__item animate-on-scroll" style="transition-delay: ${i * 100}ms">
+            <span class="stats__value">${s.value}</span>
+            <span class="stats__label">
+              <span>${s.label[0]}</span>
+              <span>${s.label[1]}</span>
+            </span>
+          </div>`
+          )
+          .join('')}
+      </div>
+      <img src="${dotsDecor}" alt="" class="stats__decor stats__decor--flip" />
+    </section>
+
+    <section class="section container">
+      <div class="section__header">
+        <div class="section__intro animate-on-scroll">
+          <h2 class="section__title">
+            What We Stand For
+            <img src="${dotsDecor}" alt="" class="section__dots" />
+          </h2>
+          <p class="section__desc">
+            Every engagement is built on the same three commitments: measurable outcomes, honest communication, and craft we are proud to put our name on.
+          </p>
+        </div>
+      </div>
+      <div class="projects__grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div class="pricing-card animate-on-scroll" style="background: var(--neutral-50); border: 1px solid var(--neutral-100); padding: 32px; border-radius: 24px;">
+          <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px; font-family: var(--font-heading);">Results First 📈</h3>
+          <p style="color: var(--neutral-500); line-height: 1.6;">Campaigns, products, and content are judged on the growth they create for your business, not vanity metrics.</p>
+        </div>
+        <div class="pricing-card animate-on-scroll" style="background: var(--neutral-50); border: 1px solid var(--neutral-100); padding: 32px; border-radius: 24px; transition-delay: 100ms">
+          <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px; font-family: var(--font-heading);">Radical Transparency 🤝</h3>
+          <p style="color: var(--neutral-500); line-height: 1.6;">Clear reporting, honest timelines, and direct access to the people actually doing the work.</p>
+        </div>
+        <div class="pricing-card animate-on-scroll" style="background: var(--neutral-50); border: 1px solid var(--neutral-100); padding: 32px; border-radius: 24px; transition-delay: 200ms">
+          <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px; font-family: var(--font-heading);">Craft & Quality 🎨</h3>
+          <p style="color: var(--neutral-500); line-height: 1.6;">From creative to code, we ship work that is tastefully designed and built to last.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section achievements container">
+      <div class="achievements__header animate-on-scroll">
+        <h2 class="section__title">
+          Our Achievements
+          <img src="${dotsDecor}" alt="" class="section__dots" />
+        </h2>
+        <p class="section__desc">${placeholder}</p>
+      </div>
+      <div class="achievements__grid">
+        ${achievements
+          .map(
+            (a, i) => `
+          <div class="achievements__item animate-on-scroll" style="transition-delay: ${i * 100}ms">
+            <span class="achievements__value">${a.value}</span>
+            <span class="achievements__label">${a.label}</span>
+          </div>`
+          )
+          .join('')}
+      </div>
+    </section>
+
+    <section class="section team">
+      <div class="container">
+        <h2 class="section__title animate-on-scroll">
+          Our Team Members
+          <img src="${dotsDecor}" alt="" class="section__dots" />
+        </h2>
+        <div class="team__list">
+          ${team
+            .map(
+              (m) => `
+            <div class="team__row animate-on-scroll ${m.active ? 'team__row--active' : ''}" role="button" tabindex="0" data-team-row>
+              <div class="team__member">
+                <img src="${m.avatar}" alt="${m.name}" class="team__avatar" />
+                <span class="team__name corner-frame ${m.active ? 'team__name--active' : ''}">
+                  <span class="corner-frame__border"></span>
+                  <img src="${heroHighlight}" alt="" class="corner-frame__dots" />
+                  <span class="corner-frame__text">${m.name}</span>
+                </span>
+              </div>
+              <span class="team__role">${m.role}</span>
+            </div>`
+            )
+            .join('')}
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta container">
+      <div class="cta__card">
+        <div class="cta__content animate-on-scroll">
+          <h2 class="cta__title">Let's Build Something ${cornerFrame('Amazing', 'cta__highlight-wrap')}</h2>
+          <p class="cta__text">${placeholder}</p>
+          <a href="/contact" class="btn btn--primary">Start a Project</a>
+        </div>
+        <img src="${heroCharacter}" alt="" class="cta__character" aria-hidden="true" />
+      </div>
+    </section>
+  </main>
+`;
+
+const renderSimplePage = (eyebrow, title, lead, bodyHtml) => `
+  <main class="simple-page">
+    <div class="simple-page__head animate-on-scroll">
+      <span class="sp-hero__badge">${eyebrow}</span>
+      <h1 class="simple-page__title">${title}</h1>
+      <p class="simple-page__lead">${lead}</p>
+    </div>
+    <div class="simple-page__body animate-on-scroll">
+      ${bodyHtml}
+    </div>
+  </main>
+`;
+
+const renderCareersPage = () =>
+  renderSimplePage(
+    'COMPANY',
+    'Careers at Spectrum',
+    'We are a small, senior team of designers, developers, and marketers who ship work we are proud of.',
+    `
+      <p>We keep the team deliberately lean: everyone here owns real projects end to end, works directly with founders, and sees the impact of their work in actual growth numbers.</p>
+      <p>There are no open roles right now, but we are always happy to meet exceptional people. Send a short intro and your portfolio or best work through the contact page, and we will keep it on file for the right opening.</p>
+      <p style="margin-top: 32px;"><a href="/contact" class="btn btn--primary">Introduce Yourself</a></p>
+    `
+  );
+
+const renderBlogsPage = () =>
+  renderSimplePage(
+    'INSIGHTS',
+    'The Spectrum Blog',
+    'Deep dives on performance marketing, creative testing, and building products that grow.',
+    `
+      <p>We are putting the finishing touches on our blog. It will cover what actually moves the needle for the brands we work with: ad creative testing, funnel design, UGC that converts, and product builds.</p>
+      <p>Until the first articles go live, the best look at how we think is our work.</p>
+      <p style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="/portfolio" class="btn btn--primary">Explore Our Portfolio</a>
+        <a href="/performance-marketing" class="btn btn--outline">Performance Marketing</a>
+      </p>
+    `
+  );
+
+const renderPrivacyPage = () =>
+  renderSimplePage(
+    'LEGAL',
+    'Privacy Policy',
+    'How Spectrum collects, uses, and protects the information you share with us.',
+    `
+      <p>Spectrum (&quot;we&quot;, &quot;our&quot;) respects your privacy. This policy explains what we collect and why, in plain terms.</p>
+      <ul>
+        <li><strong>What we collect:</strong> the details you submit through our contact form (name, email, phone, website link, and message), plus basic, privacy-friendly site analytics to understand how the site is used.</li>
+        <li><strong>How we use it:</strong> to respond to your enquiry, deliver our services, and improve the site. We never sell your personal data or share it with third parties for advertising.</li>
+        <li><strong>How long we keep it:</strong> only as long as needed to serve you and meet legal obligations.</li>
+        <li><strong>Your rights:</strong> you can ask us to correct or delete your data at any time via the contact page.</li>
+      </ul>
+      <p>Questions about this policy? <a href="/contact">Reach out</a> and we will answer promptly.</p>
+    `
+  );
 
 const pages = {
   '/work/bounce': () => renderCaseStudyDetail(bounceCaseStudy),
@@ -1478,11 +1675,14 @@ const pages = {
       sections: []
     }
   ),
-  '/about': renderHome, // Render home for about for now
+  '/about': renderAboutPage,
   '/case-studies': renderPortfolioPage,
   '/contact': renderContactPage,
   '/portfolio': renderPortfolioPage,
-  '/blog': () => renderServicePage('Blog', 'Insights and strategies from our team.', [], null, { image: '', variants: [], bullets: [], sections: [] })
+  '/blogs': renderBlogsPage,
+  '/blog': renderBlogsPage,
+  '/careers': renderCareersPage,
+  '/privacy': renderPrivacyPage
 };
 
 const render404Page = () => `
@@ -1500,6 +1700,12 @@ const render404Page = () => `
 const renderApp = () => {
   const path = window.location.pathname || '/';
   let content = '';
+
+  // Kill lingering GSAP ScrollTriggers from the previous page so pinned
+  // sections and scrub timelines never leak or duplicate across routes.
+  if (typeof window.ScrollTrigger !== 'undefined') {
+    window.ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  }
   
   if (path === '/' || path === '') {
     content = renderHome();
@@ -1527,7 +1733,7 @@ const renderApp = () => {
   
   if (path === '/performance-marketing') {
     title = 'Performance Marketing Agency | Spectrum Agency';
-    description = 'Drive measurable growth with Spectrum Agency\\'s performance marketing strategies across paid advertising, conversion optimization, analytics, and customer acquisition.';
+    description = "Drive measurable growth with Spectrum Agency's performance marketing strategies across paid advertising, conversion optimization, analytics, and customer acquisition.";
   } else if (path === '/google-ads') {
     title = 'Google Ads Agency | PPC & Performance Marketing | Spectrum Agency';
     description = 'Maximize your ROI with data-driven Google Ads and PPC strategies by Spectrum Agency.';
@@ -1555,6 +1761,26 @@ const renderApp = () => {
   } else if (path.startsWith('/case-studies') || path === '/portfolio') {
     title = 'Performance Marketing Case Studies | Spectrum Agency';
     description = 'Explore our portfolio and see how we have driven measurable growth for our clients.';
+  } else if (path.startsWith('/work/')) {
+    const caseStudiesByPath = {
+      '/work/bounce': bounceCaseStudy,
+      '/work/mizuai': mizuaiCaseStudy,
+      '/work/mrsam': mrsamCaseStudy
+    };
+    const cs = caseStudiesByPath[path];
+    if (cs) {
+      title = cs.pageTitle + ' | Spectrum Agency';
+      description = cs.description.replace(/<br\/>/g, ' ');
+    }
+  } else if (path === '/careers') {
+    title = 'Careers at Spectrum Agency | Join Our Team';
+    description = 'Join Spectrum Agency, a lean senior team of designers, developers, and marketers building measurable digital growth.';
+  } else if (path === '/blogs' || path === '/blog') {
+    title = 'Blog & Insights | Spectrum Agency';
+    description = 'Deep dives on performance marketing, creative testing, UGC, and product growth from the Spectrum team.';
+  } else if (path === '/privacy') {
+    title = 'Privacy Policy | Spectrum Agency';
+    description = 'How Spectrum Agency collects, uses, and protects your information.';
   }
 
   document.title = title;
@@ -1580,6 +1806,9 @@ const renderApp = () => {
   }
   canonical.setAttribute('href', 'https://spectrumagency.vercel.app' + (path === '/' ? '' : path));
 
+  let ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', 'https://spectrumagency.vercel.app' + (path === '/' ? '' : path));
+
   // Re-initialize all scripts after DOM updates
   initMobileNav();
   initTeamRows();
@@ -1587,26 +1816,47 @@ const renderApp = () => {
   initScrollAnimations();
   initVariants();
   initVideos();
+  initContactForm();
+  initNewsletterForm();
   if (path === '/' || path === '') {
     initUGCAnimations();
   }
 };
 
+// html has scroll-behavior: smooth, which would animate route-change
+// scrolls all the way back up the page. Jump instantly instead.
+function scrollToTopInstant() {
+  const html = document.documentElement;
+  const prev = html.style.scrollBehavior;
+  html.style.scrollBehavior = 'auto';
+  window.scrollTo(0, 0);
+  html.style.scrollBehavior = prev;
+}
+
 // Listen for route changes
 window.addEventListener('popstate', () => {
-  window.scrollTo(0, 0);
+  scrollToTopInstant();
   renderApp();
 });
 
 // Intercept internal links for SPA routing
 document.addEventListener('click', e => {
   const link = e.target.closest('a');
-  if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('/')) {
+  if (!link) return;
+
+  // Dropdown parents (desktop) and section headings (mobile nav) are
+  // hover/visual triggers only — they must never navigate to home.
+  if (link.classList.contains('navbar__link-wrap') || link.classList.contains('mobile-nav__heading')) {
     e.preventDefault();
-    const url = link.getAttribute('href');
+    return;
+  }
+
+  const url = link.getAttribute('href');
+  if (url && url.startsWith('/')) {
+    e.preventDefault();
     if (window.location.pathname !== url) {
       window.history.pushState(null, '', url);
-      window.scrollTo(0, 0);
+      scrollToTopInstant();
       renderApp();
     }
   }
@@ -1676,20 +1926,24 @@ function initTestimonialCarousel() {
   next?.addEventListener('click', () => scrollToCard(index + 1))
 }
 
+let scrollObserver = null
+
 function initScrollAnimations() {
-  const observer = new IntersectionObserver(
+  // Reuse one observer across renders; the previous page's DOM is gone anyway.
+  if (scrollObserver) scrollObserver.disconnect()
+  scrollObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible')
-          // observer.unobserve(entry.target) // uncomment to only animate once
+          scrollObserver.unobserve(entry.target)
         }
       })
     },
     { threshold: 0.1 }
   )
   document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-    observer.observe(el)
+    scrollObserver.observe(el)
   })
 }
 
@@ -1712,11 +1966,40 @@ document.addEventListener('click', (e) => {
   }
 })
 
+function closeVideoPopup() {
+  const popup = document.querySelector('.popUpForVideo');
+  if (!popup || !popup.classList.contains('active')) return;
+  const popupVideo = popup.querySelector('video');
+  popup.classList.remove('active');
+  if (popupVideo) {
+    popupVideo.pause();
+    popupVideo.currentTime = 0;
+  }
+}
+
+// Escape closes the popup; bind once at document level and always query the
+// current DOM so re-renders never stack duplicate listeners.
+let popupEscapeBound = false;
+function ensurePopupEscapeHandler() {
+  if (popupEscapeBound) return;
+  popupEscapeBound = true;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeVideoPopup();
+  });
+}
+
 function initUGCAnimations() {
   if (typeof gsap === 'undefined') {
     console.error('GSAP not loaded yet');
     return;
   }
+
+  const wrapper = document.querySelector('.ugc-wrapper');
+  // Idempotent per DOM generation: renderApp kills ScrollTriggers and rebuilds
+  // the page, so a fresh wrapper always re-initializes exactly once.
+  if (!wrapper || wrapper.dataset.ugcInit === 'true') return;
+  wrapper.dataset.ugcInit = 'true';
+
   gsap.registerPlugin(ScrollTrigger);
 
   const videoItems = document.querySelectorAll('.ugc-item');
@@ -1736,27 +2019,13 @@ function initUGCAnimations() {
     });
   });
 
-  closePopup.addEventListener('click', function() {
-    popup.classList.remove('active');
-    popupVideo.pause();
-    popupVideo.currentTime = 0;
-  });
+  closePopup.addEventListener('click', closeVideoPopup);
 
   popup.addEventListener('click', function(e) {
-    if (e.target === popup) {
-      popup.classList.remove('active');
-      popupVideo.pause();
-      popupVideo.currentTime = 0;
-    }
+    if (e.target === popup) closeVideoPopup();
   });
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && popup.classList.contains('active')) {
-      popup.classList.remove('active');
-      popupVideo.pause();
-      popupVideo.currentTime = 0;
-    }
-  });
+  ensurePopupEscapeHandler();
 
   const videoCards = document.querySelectorAll('.video-thumbnail');
   videoCards.forEach((video) => {
@@ -1844,6 +2113,102 @@ function initUGCAnimations() {
 window.addEventListener('load', () => {
   setTimeout(initUGCAnimations, 500);
 });
+
+// Formspree endpoint that delivers contact-form submissions by email.
+const CONTACT_FORM_ENDPOINT = 'https://formspree.io/f/xeaqayvj';
+
+function initContactForm() {
+  const form = document.querySelector('[data-contact-form]')
+  if (!form) return
+
+  const setFieldError = (input, message) => {
+    const slot = form.querySelector(`[data-error-for="${input.id}"]`)
+    if (slot) {
+      slot.textContent = message
+      slot.hidden = !message
+    }
+    input.classList.toggle('form-input--invalid', Boolean(message))
+    return !message
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const nameInput = form.querySelector('#name')
+    const emailInput = form.querySelector('#email')
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())
+
+    const nameValid = setFieldError(nameInput, nameInput.value.trim() ? '' : 'Please enter your name.')
+    const emailValid = setFieldError(emailInput, emailOk ? '' : 'Please enter a valid email address.')
+    if (!nameValid || !emailValid) return
+
+    const submitBtn = form.querySelector('.form-submit')
+    const status = form.querySelector('[data-form-status]')
+    submitBtn.disabled = true
+    submitBtn.textContent = 'Sending…'
+    if (status) status.hidden = true
+
+    const payload = {
+      _subject: 'New project inquiry — Spectrum website',
+      _gotcha: form.querySelector('[data-gotcha]')?.value || '',
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      phone: form.querySelector('#phone')?.value.trim() || '',
+      website: form.querySelector('#website')?.value.trim() || '',
+      message: form.querySelector('#comment')?.value.trim() || ''
+    }
+
+    if (CONTACT_FORM_ENDPOINT) {
+      try {
+        const res = await fetch(CONTACT_FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        if (!res.ok) throw new Error('Request failed')
+      } catch (err) {
+        submitBtn.disabled = false
+        submitBtn.textContent = 'Send'
+        if (status) {
+          status.textContent = 'Something went wrong while sending. Please try again.'
+          status.hidden = false
+        }
+        return
+      }
+    }
+
+    const success = document.querySelector('[data-contact-success]')
+    if (success) {
+      const who = success.querySelector('[data-success-name]')
+      if (who) who.textContent = payload.name.split(' ')[0]
+      form.hidden = true
+      success.hidden = false
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  })
+
+  form.querySelectorAll('.form-input').forEach((input) => {
+    input.addEventListener('input', () => {
+      const slot = form.querySelector(`[data-error-for="${input.id}"]`)
+      if (slot && !slot.hidden) {
+        slot.hidden = true
+        input.classList.remove('form-input--invalid')
+      }
+    })
+  })
+}
+
+function initNewsletterForm() {
+  const form = document.querySelector('[data-newsletter-form]')
+  if (!form) return
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    // No mailing-list backend yet — send interested visitors to the contact page.
+    window.history.pushState(null, '', '/contact')
+    scrollToTopInstant()
+    renderApp()
+  })
+}
 
 function initVariants() {
   const buttons = document.querySelectorAll('.sp-variant-btn');
