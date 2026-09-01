@@ -911,16 +911,28 @@ body.menu-open {
   }
 }
 
-.animate-on-scroll {
+/* Reveal-on-scroll is progressive enhancement: elements are visible by
+   default; JS hides only what is below the fold (.is-hidden) and reveals it
+   on intersection (.is-visible). If JS or the observer hiccups, content
+   still shows instead of staying stuck at opacity: 0. */
+.animate-on-scroll.is-hidden {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   will-change: opacity, transform;
 }
 
 .animate-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* The reveal's final state must keep the popular card's designed scale. */
+.animate-on-scroll.is-visible.pricing-card--popular {
+  transform: scale(1.02);
+}
+.animate-on-scroll.is-visible.pricing-card--popular:hover {
+  transform: scale(1.02) translateY(-4px);
 }
 
 .animate-delay-100 { transition-delay: 100ms; }

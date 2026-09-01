@@ -10,23 +10,16 @@ import arrowRight from './assets/figma/arrow-right.svg'
 import navLine from './assets/figma/nav-line.svg'
 import dotsDecor from './assets/figma/dots-decor.svg'
 import journeyLines from './assets/figma/journey-lines.svg'
-import project1 from './assets/figma/codebattle.png'
-import project2 from './assets/figma/ridenow.jpg'
-import project3 from './assets/figma/assignflow.png'
-import project4 from './assets/figma/aashna.jpg'
-import project5 from './assets/figma/foodfinder.jpg'
-import featured1 from './assets/figma/featured-1.png'
-import featured2 from './assets/figma/featured-2.png'
-import featured3 from './assets/figma/featured-3.png'
-import featured4 from './assets/figma/featured-4.png'
-import featured5 from './assets/figma/featured-5.png'
-import featured6 from './assets/figma/featured-6.png'
+import project1 from './assets/figma/codebattle.webp'
+import project2 from './assets/figma/ridenow.webp'
+import project3 from './assets/figma/assignflow.webp'
+import project4 from './assets/figma/aashna.webp'
 import stars from './assets/figma/stars.svg'
-import avatarCenter from './assets/figma/avatar-center.png'
-import team1 from './assets/figma/team-1.png'
-import team2 from './assets/figma/team-2.png'
-import team3 from './assets/figma/team-3.png'
-import team4 from './assets/figma/team-4.png'
+import avatarCenter from './assets/figma/avatar-center.webp'
+import team1 from './assets/figma/team-1.webp'
+import team2 from './assets/figma/team-2.webp'
+import team3 from './assets/figma/team-3.webp'
+import team4 from './assets/figma/team-4.webp'
 
 const cornerFrame = (text, className = '') =>
   `<span class="corner-frame ${className}"><span class="corner-frame__border"></span><img src="${heroHighlight}" alt="" class="corner-frame__dots" /><span class="corner-frame__text">${text}</span></span>`
@@ -49,12 +42,12 @@ const projects = [
 ]
 
 const featured = [
-  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/003_28_March_Cukoo_single_image.jpg', title: 'Cukoo Apparels', dark: true },
-  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/108-maryada-tee-carousel-3-dec-1.jpg', title: 'Maryada Tees', dark: true, featured: true },
-  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/haldiram-taste-of-home-cities-carousel-25-jan-1.jpg', title: 'Haldiram Campaigns', dark: false },
-  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/case-factory-carousel-1200px-6-dec-2.jpg', title: 'Case Factory', dark: false },
-  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/rangraze-banarasi-saree-with-offer-carousel-14-aug.jpg', title: 'Rangraze Sarees', dark: false },
-  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/zaadram-Unisex-Eyewear-carousel-30-nov-3.jpg', title: 'Zaadram Eyewear', dark: false },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/003_28_March_Cukoo_single_image.jpg?width=600', title: 'Cukoo Apparels', dark: true },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/108-maryada-tee-carousel-3-dec-1.jpg?width=600', title: 'Maryada Tees', dark: true, featured: true },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/haldiram-taste-of-home-cities-carousel-25-jan-1.jpg?width=600', title: 'Haldiram Campaigns', dark: false },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/case-factory-carousel-1200px-6-dec-2.jpg?width=600', title: 'Case Factory', dark: false },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/rangraze-banarasi-saree-with-offer-carousel-14-aug.jpg?width=600', title: 'Rangraze Sarees', dark: false },
+  { image: 'https://cdn.shopify.com/s/files/1/0722/3194/4424/files/zaadram-Unisex-Eyewear-carousel-30-nov-3.jpg?width=600', title: 'Zaadram Eyewear', dark: false },
 ]
 
 const pricingPlans = [
@@ -307,7 +300,7 @@ const renderHome = () => `
           .map(
             (p) => `
           <article class="project-card animate-on-scroll">
-            <img src="${p.image}" alt="${p.title}" class="project-card__image" />
+            <img src="${p.image}" alt="${p.title}" class="project-card__image" loading="lazy" decoding="async" />
             <div class="project-card__overlay"></div>
             <div class="project-card__info">
               <h3>${p.title}</h3>
@@ -385,16 +378,16 @@ const renderHome = () => `
       <div class="scrolling-portfolio-wrapper">
         <div class="scrolling-line scrolling-line-left">
           <div class="scrolling-track">
-            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
-            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
-            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" loading="lazy" decoding="async" />`).join('')}
+            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" loading="lazy" decoding="async" />`).join('')}
+            ${featured.map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" loading="lazy" decoding="async" />`).join('')}
           </div>
         </div>
         <div class="scrolling-line scrolling-line-right" style="margin-top: 24px;">
           <div class="scrolling-track scrolling-track--reverse">
-            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
-            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
-            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" />`).join('')}
+            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" loading="lazy" decoding="async" />`).join('')}
+            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" loading="lazy" decoding="async" />`).join('')}
+            ${[...featured].reverse().map(f => `<img src="${f.image}" alt="${f.title}" class="portfolio-direct-image" loading="lazy" decoding="async" />`).join('')}
           </div>
         </div>
       </div>
@@ -467,7 +460,7 @@ const renderHome = () => `
               (m) => `
             <div class="team__row animate-on-scroll ${m.active ? 'team__row--active' : ''}" role="button" tabindex="0" data-team-row>
               <div class="team__member">
-                <img src="${m.avatar}" alt="${m.name}" class="team__avatar" />
+                <img src="${m.avatar}" alt="${m.name}" class="team__avatar" loading="lazy" decoding="async" />
                 <span class="team__name corner-frame ${m.active ? 'team__name--active' : ''}">
                   <span class="corner-frame__border"></span>
                   <img src="${heroHighlight}" alt="" class="corner-frame__dots" />
@@ -663,14 +656,14 @@ const renderServicePage = (title, description, features, caseStudy = null, detai
       </div>
       <div class="case-study-card animate-on-scroll">
         <div class="case-study-card__image-wrap">
-          <img src="${caseStudy.image}" alt="${caseStudy.title}" class="case-study-card__image" />
+          <img src="${caseStudy.image}" alt="${caseStudy.title}" class="case-study-card__image" loading="lazy" decoding="async" />
           ${caseStudy.gallery ? `
           <div class="case-study-card__gallery">
             ${caseStudy.gallery.map(media => {
               if (media.endsWith('.mp4')) {
                 return '<video src="' + media + '" autoplay loop muted playsinline class="case-study-card__gallery-item"></video>';
               }
-              return '<img src="' + media + '" alt="" class="case-study-card__gallery-item" />';
+              return '<img src="' + media + '" alt="" class="case-study-card__gallery-item" loading="lazy" decoding="async" />';
             }).join('')}
           </div>
           ` : ''}
@@ -887,7 +880,7 @@ const renderCaseStudyDetail = (caseStudy) => `
           <div class="cs-gallery__item">
             ${caseStudy.gallery[0].endsWith('.mp4') ? 
               `<video src="${caseStudy.gallery[0]}" autoplay loop muted playsinline></video>` : 
-              `<img src="${caseStudy.gallery[0]}" alt="" />`}
+              `<img src="${caseStudy.gallery[0]}" alt="" loading="lazy" decoding="async" />`}
           </div>
           ` : ''}
           ${caseStudy.gallery.length > 1 ? `
@@ -896,7 +889,7 @@ const renderCaseStudyDetail = (caseStudy) => `
             <div class="cs-gallery__item">
               ${media.endsWith('.mp4') ? 
                 `<video src="${media}" autoplay loop muted playsinline></video>` : 
-                `<img src="${media}" alt="" />`}
+                `<img src="${media}" alt="" loading="lazy" decoding="async" />`}
             </div>
             `).join('')}
           </div>
@@ -1144,7 +1137,7 @@ const renderAboutPage = () => `
               (m) => `
             <div class="team__row animate-on-scroll ${m.active ? 'team__row--active' : ''}" role="button" tabindex="0" data-team-row>
               <div class="team__member">
-                <img src="${m.avatar}" alt="${m.name}" class="team__avatar" />
+                <img src="${m.avatar}" alt="${m.name}" class="team__avatar" loading="lazy" decoding="async" />
                 <span class="team__name corner-frame ${m.active ? 'team__name--active' : ''}">
                   <span class="corner-frame__border"></span>
                   <img src="${heroHighlight}" alt="" class="corner-frame__dots" />
@@ -1325,12 +1318,12 @@ const pages = {
           title: 'Recent Performance Results',
           content: `
             <div class="sp-results-gallery">
-              <img src="/images/results/media_1788169857811.png" alt="Performance Result 1" class="sp-result-img" />
-              <img src="/images/results/media_1788169865350.png" alt="Performance Result 2" class="sp-result-img" />
-              <img src="/images/results/media_1788169877534.png" alt="Performance Result 3" class="sp-result-img" />
-              <img src="/images/results/media_1788169885148.png" alt="Performance Result 4" class="sp-result-img" />
-              <img src="/images/results/media_1788169893903.png" alt="Performance Result 5" class="sp-result-img" />
-              <img src="/images/results/media_1788170311501.png" alt="Performance Result 6" class="sp-result-img" />
+              <img src="/images/results/media_1788169857811.png" alt="Performance Result 1" loading="lazy" decoding="async" class="sp-result-img" />
+              <img src="/images/results/media_1788169865350.png" alt="Performance Result 2" loading="lazy" decoding="async" class="sp-result-img" />
+              <img src="/images/results/media_1788169877534.png" alt="Performance Result 3" loading="lazy" decoding="async" class="sp-result-img" />
+              <img src="/images/results/media_1788169885148.png" alt="Performance Result 4" loading="lazy" decoding="async" class="sp-result-img" />
+              <img src="/images/results/media_1788169893903.png" alt="Performance Result 5" loading="lazy" decoding="async" class="sp-result-img" />
+              <img src="/images/results/media_1788170311501.png" alt="Performance Result 6" loading="lazy" decoding="async" class="sp-result-img" />
             </div>
           `
         }
@@ -1929,20 +1922,44 @@ function initTestimonialCarousel() {
 let scrollObserver = null
 
 function initScrollAnimations() {
+  const els = document.querySelectorAll('.animate-on-scroll')
+
+  // No IntersectionObserver support: show everything, animate nothing.
+  if (typeof IntersectionObserver === 'undefined') {
+    els.forEach((el) => el.classList.add('is-visible'))
+    return
+  }
+
   // Reuse one observer across renders; the previous page's DOM is gone anyway.
   if (scrollObserver) scrollObserver.disconnect()
   scrollObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible')
-          scrollObserver.unobserve(entry.target)
+          const el = entry.target
+          el.classList.add('is-visible')
+          el.classList.remove('is-hidden')
+          // Release the inline stagger delay once the reveal finishes so it
+          // does not slow down later transitions (e.g. card hover).
+          const delay = parseFloat(el.style.transitionDelay) || 0
+          if (delay) {
+            setTimeout(() => { el.style.transitionDelay = '' }, delay + 900)
+          }
+          scrollObserver.unobserve(el)
         }
       })
     },
     { threshold: 0.1 }
   )
-  document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+
+  const viewportHeight = window.innerHeight
+  els.forEach((el) => {
+    // Hide ONLY elements currently below the fold. Anything already on screen
+    // stays visible even if the observer callback is delayed or skipped —
+    // this is what used to leave cards/sections stuck at opacity: 0.
+    if (el.getBoundingClientRect().top >= viewportHeight) {
+      el.classList.add('is-hidden')
+    }
     scrollObserver.observe(el)
   })
 }
@@ -2111,7 +2128,14 @@ function initUGCAnimations() {
 
 // We need to wait for GSAP to be available since it's loaded asynchronously in head via CDN.
 window.addEventListener('load', () => {
-  setTimeout(initUGCAnimations, 500);
+  // If GSAP was not ready during the first render (slow CDN), retry once —
+  // initUGCAnimations is idempotent, so this never double-initializes.
+  initUGCAnimations();
+  // Recalculate pin positions and spacer heights now that images and fonts
+  // have settled, so sections around the pinned UGC block align correctly.
+  if (typeof window.ScrollTrigger !== 'undefined') {
+    window.ScrollTrigger.refresh();
+  }
 });
 
 // Formspree endpoint that delivers contact-form submissions by email.
