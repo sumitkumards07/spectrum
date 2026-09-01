@@ -849,7 +849,7 @@ const renderCaseStudyDetail = (caseStudy) => `
               Send a message
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
             </a>
-            <a href="/contact" class="cs-btn cs-btn--solid">
+            <a href="https://cal.com/infiniumstudio/project-consultation" target="_blank" class="cs-btn cs-btn--solid">
               Book a call
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
             </a>
